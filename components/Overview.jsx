@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { BookOpen, Users, Award, TrendingUp } from 'lucide-react';
 
 export default function Overview() {
-  const [hoveredButton, setHoveredButton] = useState(null);
+  const [cardsExpanded, setCardsExpanded] = useState(false);
+  const [imageHovered, setImageHovered] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const buttons = [
     {
@@ -10,24 +12,28 @@ export default function Overview() {
       label: 'View Curriculum',
       icon: BookOpen,
       description: 'Semester-wise subjects, labs & electives',
+      zIndex: 40,
     },
     {
       id: 'eligibility',
       label: 'Eligibility',
       icon: Users,
       description: 'Qualification criteria & age limit',
+      zIndex: 30,
     },
     {
       id: 'scholarship',
       label: 'Fee & Scholarship',
       icon: Award,
       description: 'Tuition, hostel & merit scholarships',
+      zIndex: 20,
     },
     {
       id: 'apply',
       label: 'Apply Now',
       icon: TrendingUp,
       description: 'Applications open for 2026-27',
+      zIndex: 10,
     },
   ];
 
@@ -36,7 +42,7 @@ export default function Overview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-2">
-          M.Tech (CSE - AI&ML) Overview
+          M.Tech (CSE) Overview
         </h2>
         <div className="flex justify-center mb-12">
           <div
@@ -53,139 +59,217 @@ export default function Overview() {
                 Dear Aspirants,
               </h3>
               <p className="text-gray-700 leading-relaxed">
-                It gives me great pleasure to introduce our M.Tech in CSE
-                (Artificial Intelligence & Machine Learning), a postgraduate
-                programme designed to align with the rapidly evolving landscape
-                of Artificial Intelligence, innovation, and advanced computing.
+                It is my privilege to welcome you to the Department of Computer Science & 
+                Engineering, accredited by NBA until June 2027. The department offers 
+                well-structured 4-year B.Tech and 2-year M.Tech programmes designed to build 
+                strong computational foundations and prepare students for the evolving global 
+                technology landscape.
               </p>
             </div>
 
             <p className="text-gray-700 leading-relaxed">
-              Artificial Intelligence today has become a fundamental force driving
-              transformation across industries and research domains. This programme
-              has been carefully structured to provide a strong academic foundation
-              combined with exposure to emerging AI technologies, enabling students
-              to develop the knowledge and skills required to address complex
-              real-world challenges.
+              Our academic framework integrates core computer science with emerging domains 
+              such as Artificial Intelligence, Data Science, Cloud Computing, and Cyber Security, 
+              enabling students to develop strong technical depth and advanced problem-solving 
+              abilities required in modern industries.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              A key strength of this programme lies in its advanced computational
-              infrastructure, including access to NVIDIA DGX Supercomputing
-              facilities, enabling students to work on compute-intensive AI problems
-              and advanced model development. This research-grade environment provides
-              valuable exposure to modern AI systems and real-world applications.
+              Students benefit from a premium learning ecosystem supported by modern laboratories, 
+              research-driven initiatives, and continuous industry exposure. Opportunities such as 
+              internships, live projects, technical competitions, and collaborative activities help 
+              transform academic learning into real-world competence.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
-              This programme is intended for a diverse group of learners, including
-              working professionals aiming to enhance their technical expertise,
-              academicians seeking to deepen their research capabilities, and
-              motivated graduates with an interest in Artificial Intelligence and
-              data-driven technologies.
-            </p>
-
-            <p className="text-gray-700 leading-relaxed">
-              We are committed to providing a strong academic and research ecosystem
-              through dedicated faculty mentorship, opportunities for innovation, and
-              close engagement with emerging developments in Artificial Intelligence.
-              Our goal is to nurture professionals and researchers who can contribute
-              meaningfully to the future of intelligent technologies.
-            </p>
-
-            <p className="text-gray-700 leading-relaxed">
-              This programme is not only about acquiring technical knowledge but also
-              about developing analytical thinking, innovation-driven problem solving,
-              and responsible AI practices – qualities essential for leadership in an
-              AI-driven world. I warmly invite you to be part of this exciting academic
-              journey and contribute to the advancement of intelligent technologies
-              that create meaningful impact.
+              With focused placement orientation, dedicated faculty mentorship, and structured skill 
+              development support, we aim to nurture confident engineers, innovative thinkers, and 
+              responsible technology professionals ready to build impactful and successful careers.
             </p>
           </div>
 
-          {/* Image placeholder with gradient */}
+          {/* Dean's Image */}
           <div className="relative">
-            <div className="rounded-xl overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                alt="Program Coordinator"
-                className="w-full h-96 object-cover"
-              />
-            </div>
-            <div
-              className="absolute -bottom-6 -right-6 rounded-lg p-4 text-white shadow-lg max-w-xs"
-              style={{ backgroundColor: '#164265' }}
+            <div 
+              className="rounded-xl overflow-hidden shadow-2xl transition-all duration-300 relative"
+              onMouseEnter={() => setImageHovered(true)}
+              onMouseLeave={() => setImageHovered(false)}
             >
-              <p className="font-bold text-lg">Dr. Rekha Kashyap</p>
-              <p className="text-sm">Dean, CSE (AI and AI&ML)</p>
+              {/* Border overlay on hover */}
+              <div 
+                className={`absolute inset-0 rounded-xl pointer-events-none transition-opacity duration-300 ${
+                  imageHovered ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  border: '3px solid rgba(242, 101, 32, 0.3)',
+                  boxShadow: imageHovered ? '0 0 20px rgba(242, 101, 32, 0.2)' : 'none'
+                }}
+              ></div>
+              
+              {/* Image with zoom effect on hover */}
+              <div className="overflow-hidden rounded-xl">
+                <img
+                  src="../src/assets/images/Dr._Vineet_Sharma_4478-removebg-preview.png"
+                  alt="Dr. Vineet Kumar Sharma - Dean, CSE"
+                  className={`w-full h-140 object-cover transition-transform duration-500 ${
+                    imageHovered ? 'scale-105' : 'scale-100'
+                  }`}
+                  onError={(e) => {
+                    // Fallback if image not found
+                    e.target.src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=400&fit=crop';
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Name Card with subtle animation */}
+            <div
+              className={`absolute -bottom-6 -right-6 rounded-lg p-4 text-white shadow-lg max-w-xs transition-all duration-300 ${
+                imageHovered ? 'transform translate-y-1' : ''
+              }`}
+              style={{ 
+                backgroundColor: '#164265',
+                boxShadow: imageHovered 
+                  ? '0 10px 25px rgba(22, 66, 101, 0.3)' 
+                  : '0 4px 15px rgba(0, 0, 0, 0.2)'
+              }}
+            >
+              <p className="font-bold text-lg">Dr. Vineet Kumar Sharma</p>
+              <p className="text-sm opacity-90">Professor & Dean, CSE</p>
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {buttons.map((button) => {
-            const Icon = button.icon;
-            const isHovered = hoveredButton === button.id;
-            const isApplyButton = button.id === 'apply';
+        {/* Stacked Action Cards */}
+        <div 
+          className="mt-16 relative"
+          onMouseEnter={() => setCardsExpanded(true)}
+          onMouseLeave={() => {
+            setCardsExpanded(false);
+            setHoveredCard(null);
+          }}
+          style={{ height: '280px' }}
+        >
+          <div className="relative w-full h-full flex items-center justify-center">
+            {buttons.map((button, index) => {
+              const Icon = button.icon;
+              const isApplyButton = button.id === 'apply';
+              const isHovered = hoveredCard === button.id;
+              
+              // Calculate card positions
+              const getCardStyle = () => {
+                if (cardsExpanded) {
+                  // Expanded state - cards slide out horizontally
+                  const spacing = 310; // Width of card + gap
+                  const totalWidth = (buttons.length - 1) * spacing;
+                  const startOffset = -totalWidth / 2;
+                  
+                  return {
+                    transform: `translateX(${startOffset + index * spacing}px) translateY(0px)`,
+                    opacity: 1,
+                  };
+                } else {
+                  // Stacked state - all cards stack behind the first one
+                  const offset = index * 8; // Small offset for depth perception
+                  return {
+                    transform: `translateX(0px) translateY(${offset}px)`,
+                    opacity: index === 0 ? 1 : 0.7,
+                  };
+                }
+              };
 
-            return (
-              <div
-                key={button.id}
-                onMouseEnter={() => setHoveredButton(button.id)}
-                onMouseLeave={() => setHoveredButton(null)}
-                className={`rounded-xl p-6 transition-all duration-300 cursor-pointer transform ${
-                  isHovered ? 'scale-105 shadow-lg' : 'shadow-md'
-                } ${isApplyButton ? 'text-white' : 'bg-white border border-gray-200'}`}
-                style={{
-                  backgroundColor: isApplyButton
-                    ? isHovered
-                      ? '#D64612'
-                      : '#F26520'
-                    : 'white',
-                }}
-              >
+              return (
                 <div
-                  className={`rounded-lg p-3 w-fit mb-4 transition-all duration-300 ${
-                    isHovered ? 'scale-110' : ''
-                  }`}
+                  key={button.id}
+                  onMouseEnter={() => setHoveredCard(button.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className="absolute rounded-xl p-6 cursor-pointer transition-all duration-500 ease-out"
                   style={{
-                    backgroundColor: isApplyButton
-                      ? 'rgba(255,255,255,0.2)'
-                      : '#F26520',
+                    width: '280px',
+                    backgroundColor: isApplyButton ? '#F26520' : 'white',
+                    border: isApplyButton ? 'none' : '1px solid #E5E7EB',
+                    zIndex: cardsExpanded ? (isHovered ? 50 : button.zIndex) : button.zIndex,
+                    boxShadow: isHovered 
+                      ? '0 20px 40px rgba(0, 0, 0, 0.15)' 
+                      : cardsExpanded 
+                        ? '0 10px 25px rgba(0, 0, 0, 0.1)' 
+                        : index === 0 
+                          ? '0 8px 20px rgba(0, 0, 0, 0.12)' 
+                          : '0 4px 10px rgba(0, 0, 0, 0.08)',
+                    ...getCardStyle(),
                   }}
                 >
-                  <Icon
-                    size={24}
-                    className={isApplyButton ? 'text-white' : 'text-white'}
-                  />
+                  {/* Icon with subtle pulse on hover */}
+                  <div
+                    className={`rounded-lg p-3 w-fit mb-4 transition-all duration-300 ${
+                      isHovered ? 'scale-110' : ''
+                    }`}
+                    style={{
+                      backgroundColor: isApplyButton
+                        ? 'rgba(255,255,255,0.2)'
+                        : '#F26520',
+                      boxShadow: isHovered && !isApplyButton 
+                        ? '0 4px 12px rgba(242, 101, 32, 0.3)' 
+                        : 'none'
+                    }}
+                  >
+                    <Icon
+                      size={24}
+                      className="text-white"
+                    />
+                  </div>
+
+                  <h4
+                    className={`font-bold text-lg mb-2 ${
+                      isApplyButton ? 'text-white' : 'text-gray-900'
+                    }`}
+                  >
+                    {button.label}
+                  </h4>
+                  
+                  <p
+                    className={`text-sm ${
+                      isApplyButton ? 'text-orange-50' : 'text-gray-600'
+                    }`}
+                  >
+                    {button.description}
+                  </p>
+
+                  {/* Arrow with smooth animation */}
+                  <div
+                    className="mt-4 flex items-center space-x-2 font-semibold text-sm"
+                    style={{ color: isApplyButton ? 'white' : '#F26520' }}
+                  >
+                    <span>Learn more</span>
+                    <span 
+                      className={`transition-all duration-300 inline-block ${
+                        isHovered ? 'translate-x-2 opacity-100' : 'opacity-70'
+                      }`}
+                    >
+                      →
+                    </span>
+                  </div>
+
+                  {/* Subtle top border accent on hover for non-Apply cards */}
+                  {!isApplyButton && (
+                    <div 
+                      className={`absolute top-0 left-0 right-0 h-1 rounded-t-xl transition-all duration-300 ${
+                        isHovered ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      style={{ backgroundColor: '#F26520' }}
+                    ></div>
+                  )}
                 </div>
-                <h4
-                  className={`font-bold text-lg mb-2 ${
-                    isApplyButton ? 'text-white' : 'text-gray-900'
-                  }`}
-                >
-                  {button.label}
-                </h4>
-                <p
-                  className={`text-sm ${
-                    isApplyButton ? 'text-blue-50' : 'text-gray-600'
-                  }`}
-                >
-                  {button.description}
-                </p>
-                <div
-                  className="mt-4 flex items-center space-x-2 font-semibold text-sm"
-                  style={{ color: isApplyButton ? 'white' : '#F26520' }}
-                >
-                  <span>Learn more</span>
-                  <span className={`transition-transform duration-300 ${isHovered ? 'translate-x-2' : ''}`}>
-                    →
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Hint text */}
+        <div className="text-center mt-8">
+          <p className="text-sm text-gray-500 italic">
+            Hover over the cards to explore all options
+          </p>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ import ProgramDetails from "../components/ProgramDetails.jsx";
 import Infrastructure from "../components/Infrastructure.jsx";
 import Placement from "../components/Placement.jsx";
 import Testimonials from "../components/Testimonials.jsx";
-import Footer from "../components/Footer.jsx";
+
 
 export default function App() {
   return (
@@ -29,7 +29,7 @@ export default function App() {
         <Placement />
         <Testimonials />
       </main>
-      <Footer />
+     
     </div>
   );
 }
