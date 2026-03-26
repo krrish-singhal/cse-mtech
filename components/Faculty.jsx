@@ -1,171 +1,256 @@
-import React, { useState } from "react";
-import { ChevronRight, Mail, Linkedin } from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { Mail } from "lucide-react";
+import FilterButton from "./FilterButton";
+
+const facultyImageModules = import.meta.glob(
+  "../src/assets/images/*.{png,jpg,jpeg,webp,svg}",
+  {
+    eager: true,
+    import: "default",
+  },
+);
+
+const normalizeKey = (value) =>
+  value
+    .toLowerCase()
+    .replace(/\b(dr|mr|ms)\.?\b/g, "")
+    .replace(/[^a-z]/g, "");
+
+const imageByKey = Object.entries(facultyImageModules).reduce(
+  (acc, [path, src]) => {
+    const fileName = path.split("/").pop() || "";
+    const baseName = fileName
+      .replace(/\.[^.]+$/, "")
+      .replace(/_[0-9]+-removebg-preview$/i, "")
+      .replace(/-removebg-preview$/i, "");
+    acc[normalizeKey(baseName)] = src;
+    return acc;
+  },
+  {},
+);
+
+// If a faculty image filename doesn't match the name cleanly, add a small alias here.
+const imageKeyAliases = {
+  anikesh: "anikeshkumar",
+  rishabsinghrathore: "rishabhsinghrathore",
+};
+
+const facultyMembers = [
+  { id: 1, name: "Dr. Vineet Kumar Sharma", designation: "Professor & Dean" },
+  { id: 2, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
+  {
+    id: 3,
+    name: "Dr. Swati Sharma",
+    designation: "Associate Professor & Program Head (2nd to 4th yr)",
+  },
+  { id: 4, name: "Dr. Parita Jain", designation: "Professor" },
+  { id: 5, name: "Dr. Seema Maitrey", designation: "Associate Professor" },
+  { id: 6, name: "Dr. Ankur Bhardwaj", designation: "Associate Professor" },
+  { id: 7, name: "Dr. Neha Yadav", designation: "Associate Professor" },
+  {
+    id: 8,
+    name: "Dr. Pranay Madhukar Meshram",
+    designation: "Associate Professor",
+  },
+  { id: 9, name: "Dr. Madhu Gautam", designation: "Associate Professor" },
+  {
+    id: 10,
+    name: "Dr. Preeti Garg",
+    designation: "Associate Professor & Program Head (1st yr)",
+  },
+  { id: 11, name: "Dr. Upendra Mishra", designation: "Associate Professor" },
+  { id: 12, name: "Mr. Saurav Chandra", designation: "Assistant Professor" },
+  {
+    id: 13,
+    name: "Dr. Himanshi Chaudhary",
+    designation: "Assistant Professor",
+  },
+  { id: 14, name: "Mr. Gaurav Parashar", designation: "Assistant Professor" },
+  { id: 15, name: "Mr. Vipin Deval", designation: "Assistant Professor" },
+  { id: 16, name: "Mr. Umang Rastogi", designation: "Assistant Professor" },
+  { id: 17, name: "Dr. Bharti", designation: "Assistant Professor" },
+  { id: 18, name: "Mr. Pushpendra Kumar", designation: "Assistant Professor" },
+  {
+    id: 19,
+    name: "Mr. Rahul Kumar Sharma",
+    designation: "Assistant Professor",
+  },
+  { id: 20, name: "Mr. Gagan Thakral", designation: "Assistant Professor" },
+  { id: 21, name: "Ms. Mani Dwivedi", designation: "Assistant Professor" },
+  { id: 22, name: "Ms. Nishu Gupta", designation: "Assistant Professor" },
+  { id: 23, name: "Ms. Deepti Singh", designation: "Assistant Professor" },
+  {
+    id: 24,
+    name: "Mr. Omprakash Kushwaha",
+    designation: "Assistant Professor",
+  },
+  { id: 25, name: "Mr. Yogendra Pal", designation: "Assistant Professor" },
+  { id: 26, name: "Mr. Anshuman Kalia", designation: "Assistant Professor" },
+  { id: 27, name: "Mr. Harsh Modi", designation: "Assistant Professor" },
+  { id: 28, name: "Mr. Pavan Sharma", designation: "Assistant Professor" },
+  { id: 29, name: "Ms. Vanshika Gupta", designation: "Assistant Professor" },
+  { id: 30, name: "Ms. Neeti Pahuja", designation: "Assistant Professor" },
+  {
+    id: 31,
+    name: "Mr. Rajanish Kumar Jain",
+    designation: "Assistant Professor",
+  },
+  { id: 32, name: "Ms. Surbhi Jain", designation: "Assistant Professor" },
+  { id: 33, name: "Ms. Maitree", designation: "Assistant Professor" },
+  { id: 34, name: "Mr. Aman Srivastav", designation: "Assistant Professor" },
+  { id: 35, name: "Mr. Mohit Tanwar", designation: "Assistant Professor" },
+  { id: 36, name: "Mr. Hrjeet Singh", designation: "Assistant Professor" },
+  { id: 37, name: "Mr. Vaibhaw Kori", designation: "Assistant Professor" },
+  { id: 38, name: "Ms. Prabhjot Kaur", designation: "Assistant Professor" },
+  { id: 39, name: "Dr. Nand Kishor Yadav", designation: "Assistant Professor" },
+  { id: 40, name: "Mr. Navdesh Singh", designation: "Assistant Professor" },
+  {
+    id: 41,
+    name: "Mr. Rishab Singh Rathore",
+    designation: "Assistant Professor",
+  },
+  { id: 42, name: "Mr. Vaibhav Kumar", designation: "Assistant Professor" },
+  { id: 43, name: "Mr. Anikesh", designation: "Assistant Professor" },
+  { id: 44, name: "Mr. Ravi Tomer", designation: "Assistant Manager" },
+  { id: 45, name: "Mr. Sandeep Kumar", designation: "Officer-IT" },
+  { id: 46, name: "Mr. Jaskirat Singh", designation: "Adjunct Faculty" },
+];
+
+const inferDegree = (name) => (name.startsWith("Dr.") ? "Ph.D." : "");
+
+const generateEmail = (name) => {
+  const localPart = name
+    .replace(/\b(Dr|Mr|Ms)\.?\s*/gi, "")
+    .replace(/[^a-zA-Z\s]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .join(".")
+    .toLowerCase();
+  return `${localPart}@kiet.edu`;
+};
+
+const candidateKeysForName = (name) => {
+  const stripped = name
+    .replace(/\b(Dr|Mr|Ms)\.?\s*/gi, "")
+    .replace(/[^a-zA-Z\s]/g, " ");
+  const parts = stripped.trim().split(/\s+/).filter(Boolean);
+  const keys = [];
+  keys.push(normalizeKey(name));
+  keys.push(normalizeKey(stripped));
+  if (parts.length >= 2) {
+    keys.push(normalizeKey(`${parts[0]} ${parts[parts.length - 1]}`));
+  }
+  if (parts.length >= 3) {
+    keys.push(
+      normalizeKey(`${parts[0]} ${parts[1]} ${parts[parts.length - 1]}`),
+    );
+  }
+  return Array.from(new Set(keys)).filter(Boolean);
+};
+
+const findImageForFaculty = (name) => {
+  const keys = candidateKeysForName(name);
+  for (const key of keys) {
+    const alias = imageKeyAliases[key];
+    const finalKey = alias || key;
+    const src = imageByKey[finalKey];
+    if (src) return src;
+  }
+  return null;
+};
+
+const tierForDesignation = (designation) => {
+  if (designation.startsWith("Professor")) return "professors";
+  if (designation.startsWith("Associate Professor")) return "associates";
+  if (designation.startsWith("Assistant Professor")) return "assistants";
+  return "others";
+};
+
+const tierMeta = {
+  professors: { label: "Professors", color: "#164265" },
+  associates: { label: "Associate Professors", color: "#164265" },
+  assistants: { label: "Assistant Professors", color: "#164265" },
+  others: { label: "Other Roles", color: "#164265" },
+};
 
 export default function Faculty() {
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("all");
 
-  const facultyData = {
-    professors: [
-      {
-        id: 1,
-        name: "Dr. Laxman Singh",
-        title: "Professor",
-        qualification: "Ph.D. Jamia Millia Islamia",
-        initials: "LS",
-        color: "#ADD8E6",
-      },
-      {
-        id: 2,
-        name: "Dr. Anil Kumar",
-        title: "Professor",
-        qualification: "Ph.D. IIT Bombay",
-        initials: "AK",
-        color: "#ADD8E6",
-      },
-    ],
-    associates: [
-      {
-        id: 3,
-        name: "Dr. Pratibha Singh",
-        title: "Associate Professor & Program Head",
-        qualification: "Ph.D. Program Head",
-        initials: "PS",
-        color: "#5DCEAE",
-      },
-      {
-        id: 4,
-        name: "Dr. Shelly Gupta",
-        title: "Associate Professor",
-        qualification: "Ph.D. Amity",
-        initials: "SG",
-        color: "#5DCEAE",
-      },
-      {
-        id: 5,
-        name: "Dr. Mukesh K.",
-        title: "Associate Professor",
-        qualification: "Ph.D. VTU",
-        initials: "MK",
-        color: "#5DCEAE",
-      },
-      {
-        id: 6,
-        name: "Dr. Puneet Garg",
-        title: "Associate Professor",
-        qualification: "Ph.D. JC Bose University",
-        initials: "PG",
-        color: "#5DCEAE",
-      },
-    ],
-    assistants: [
-      {
-        id: 7,
-        name: "Dr. Rahul V.",
-        title: "Assistant Professor",
-        qualification: "Ph.D.",
-        initials: "RV",
-        color: "#D3D3D3",
-      },
-      {
-        id: 8,
-        name: "Dr. Neha M.",
-        title: "Assistant Professor",
-        qualification: "Ph.D.",
-        initials: "NM",
-        color: "#D3D3D3",
-      },
-      {
-        id: 9,
-        name: "Dr. Sunil K.",
-        title: "Assistant Professor",
-        qualification: "Ph.D.",
-        initials: "SK",
-        color: "#D3D3D3",
-      },
-      {
-        id: 10,
-        name: "Dr. Priya T.",
-        title: "Assistant Professor",
-        qualification: "Ph.D.",
-        initials: "PT",
-        color: "#D3D3D3",
-      },
-      {
-        id: 11,
-        name: "Dr. Amit J.",
-        title: "Assistant Professor",
-        qualification: "Ph.D.",
-        initials: "AJ",
-        color: "#D3D3D3",
-      },
-    ],
-  };
+  const facultyWithMeta = useMemo(
+    () =>
+      facultyMembers.map((member) => ({
+        ...member,
+        degree: inferDegree(member.name),
+        email: generateEmail(member.name),
+        imageSrc: findImageForFaculty(member.name),
+      })),
+    [],
+  );
 
-  const filters = [
-    { id: "all", label: "All Faculty" },
-    { id: "professor", label: "Professor" },
-    { id: "associate", label: "Associate Professor" },
-    { id: "assistant", label: "Assistant Professor" },
-  ];
+  const grouped = useMemo(() => {
+    return facultyWithMeta.reduce(
+      (acc, faculty) => {
+        const tier = tierForDesignation(faculty.designation);
+        acc[tier].push(faculty);
+        return acc;
+      },
+      { professors: [], associates: [], assistants: [], others: [] },
+    );
+  }, [facultyWithMeta]);
 
-  const getFacultyByFilter = () => {
-    if (selectedFilter === "all") {
-      return [
-        ...facultyData.professors,
-        ...facultyData.associates,
-        ...facultyData.assistants,
-      ];
+  // Get filtered faculty based on active filter
+  const filteredFaculty = useMemo(() => {
+    if (activeFilter === "all") {
+      return facultyWithMeta;
     }
-    if (selectedFilter === "professor") return facultyData.professors;
-    if (selectedFilter === "associate") return facultyData.associates;
-    if (selectedFilter === "assistant") return facultyData.assistants;
-    return [];
+    return grouped[activeFilter] || [];
+  }, [activeFilter, facultyWithMeta, grouped]);
+
+  // Handle filter button click
+  const handleFilterClick = (filterId) => {
+    setActiveFilter(filterId);
   };
 
   const FacultyCard = ({ faculty }) => (
-    <div
-      className="group relative overflow-hidden rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-gray-300 bg-white"
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-4px)";
-        e.currentTarget.style.boxShadow = "0 12px 24px rgba(0, 0, 0, 0.1)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "0 1px 3px rgba(0, 0, 0, 0.1)";
-      }}
-    >
-      <div className="flex items-start space-x-4">
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center font-bold text-white text-lg transition-transform duration-300 group-hover:scale-110"
-          style={{ backgroundColor: faculty.color }}
+    <div className="group flex-none w-65 sm:w-75 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:border-gray-300 hover:shadow-lg">
+      {/* Big square photo (top) */}
+      <div className="w-full aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 flex items-end justify-center">
+        {faculty.imageSrc ? (
+          <img
+            src={faculty.imageSrc}
+            alt={faculty.name}
+            className="h-full w-full object-contain object-bottom"
+            loading="lazy"
+          />
+        ) : (
+          <div className="h-full w-full" />
+        )}
+      </div>
+
+      {/* Details (below) */}
+      <div className="mt-5 min-w-0">
+        <h4 className="text-xl font-semibold text-gray-900 truncate">
+          {faculty.name}
+        </h4>
+        <p className="mt-2 text-sm font-semibold" style={{ color: "#164265" }}>
+          {faculty.designation}
+        </p>
+        {faculty.degree ? (
+          <p className="mt-2 text-xs italic text-gray-600">{faculty.degree}</p>
+        ) : null}
+        <a
+          href={`mailto:${faculty.email}`}
+          className="mt-4 inline-flex items-center gap-3 text-sm text-gray-800"
+          aria-label={`Email ${faculty.name}`}
+          title={faculty.email}
         >
-          {faculty.initials}
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-bold text-gray-900 truncate">
-            {faculty.name}
-          </h3>
-          <p className="text-sm font-medium" style={{ color: "#164265" }}>
-            {faculty.title}
-          </p>
-          <p className="text-xs text-gray-600 mt-1 line-clamp-2">
-            {faculty.qualification}
-          </p>
-          <div className="flex items-center space-x-2 mt-3">
-            <button
-              className="p-2 rounded-lg transition-all duration-300 hover:opacity-100 opacity-60"
-              style={{ backgroundColor: "#F26520" }}
-            >
-              <Mail size={14} className="text-white" />
-            </button>
-            <button
-              className="p-2 rounded-lg transition-all duration-300 hover:opacity-100 opacity-60"
-              style={{ backgroundColor: "#164265" }}
-            >
-              <Linkedin size={14} className="text-white" />
-            </button>
-          </div>
-        </div>
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white transition-colors duration-300 group-hover:bg-gray-50">
+            <Mail size={18} />
+          </span>
+          <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-55 group-hover:opacity-100">
+            {faculty.email}
+          </span>
+        </a>
       </div>
     </div>
   );
@@ -173,133 +258,97 @@ export default function Faculty() {
   return (
     <section
       id="faculty"
-      className="py-16 bg-gradient-to-b from-gray-50 to-white"
+      className="py-16 bg-linear-to-b from-gray-50 to-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-2">Faculty</h2>
-              <div
-                className="w-16 h-1 rounded-full"
-                style={{ backgroundColor: "#F26520" }}
-              ></div>
-            </div>
-            <a
-              href="#view-all"
-              className="text-sm font-semibold"
-              style={{ color: "#F26520" }}
-            >
-              View All <ChevronRight className="inline ml-1" size={16} />
-            </a>
-          </div>
-
-          <p className="text-gray-600 max-w-2xl">
-            Faculty arranged in tiers: Professors at top, then Associate, then
-            Assistant. Shows seniority. Photo-forward. No search needed.
+        <div className="mb-8">
+          <h2 className="text-4xl font-bold text-gray-900 mb-2">Faculty</h2>
+          <div
+            className="w-16 h-1 rounded-full"
+            style={{ backgroundColor: "#F26520" }}
+          ></div>
+          <p className="mt-4 max-w-3xl text-gray-600">
+            Hover on the email icon to reveal the email address.
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-3 mb-8">
-          {filters.map((filter) => (
-            <button
-              key={filter.id}
-              onClick={() => setSelectedFilter(filter.id)}
-              className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105 ${
-                selectedFilter === filter.id
-                  ? "text-white shadow-lg"
-                  : "text-gray-700 border border-gray-300 hover:border-gray-400"
-              }`}
-              style={{
-                backgroundColor:
-                  selectedFilter === filter.id ? "#F26520" : "transparent",
-              }}
-            >
-              {filter.label}
-            </button>
-          ))}
+        {/* Filter Buttons */}
+        <div className="mb-8 overflow-x-auto no-scrollbar">
+          <div className="flex gap-3 pb-2">
+            <FilterButton
+              filterId="all"
+              label="All Faculty"
+              count={facultyWithMeta.length}
+              isActive={activeFilter === "all"}
+              color="#F26520"
+              onClick={handleFilterClick}
+            />
+            <FilterButton
+              filterId="professors"
+              label="Professors"
+              count={grouped.professors.length}
+              isActive={activeFilter === "professors"}
+              color={tierMeta.professors.color}
+              onClick={handleFilterClick}
+            />
+            <FilterButton
+              filterId="associates"
+              label="Associate Professors"
+              count={grouped.associates.length}
+              isActive={activeFilter === "associates"}
+              color={tierMeta.associates.color}
+              onClick={handleFilterClick}
+            />
+            <FilterButton
+              filterId="assistants"
+              label="Assistant Professors"
+              count={grouped.assistants.length}
+              isActive={activeFilter === "assistants"}
+              color={tierMeta.assistants.color}
+              onClick={handleFilterClick}
+            />
+            <FilterButton
+              filterId="others"
+              label="Others"
+              count={grouped.others.length}
+              isActive={activeFilter === "others"}
+              color={tierMeta.others.color}
+              onClick={handleFilterClick}
+            />
+          </div>
         </div>
 
-        {/* Faculty Grid by Category */}
-        <div className="space-y-12">
-          {selectedFilter === "all" && (
-            <>
-              {/* Professors */}
-              <div>
-                <div className="flex items-center space-x-3 mb-6">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: "#164265" }}
-                  ></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    Professors{" "}
-                    <span className="text-gray-500 text-lg">
-                      · {facultyData.professors.length} faculty
-                    </span>
-                  </h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {facultyData.professors.map((faculty) => (
-                    <FacultyCard key={faculty.id} faculty={faculty} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Associate Professors */}
-              <div>
-                <div className="flex items-center space-x-3 mb-6">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: "#5DCEAE" }}
-                  ></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    Associate professors{" "}
-                    <span className="text-gray-500 text-lg">
-                      · {facultyData.associates.length} faculty
-                    </span>
-                  </h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {facultyData.associates.map((faculty) => (
-                    <FacultyCard key={faculty.id} faculty={faculty} />
-                  ))}
-                </div>
-              </div>
-
-              {/* Assistant Professors */}
-              <div>
-                <div className="flex items-center space-x-3 mb-6">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: "#D3D3D3" }}
-                  ></div>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    Assistant professors{" "}
-                    <span className="text-gray-500 text-lg">
-                      · {facultyData.assistants.length} faculty
-                    </span>
-                  </h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {facultyData.assistants.map((faculty) => (
-                    <FacultyCard key={faculty.id} faculty={faculty} />
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
-
-          {selectedFilter !== "all" && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {getFacultyByFilter().map((faculty) => (
-                <FacultyCard key={faculty.id} faculty={faculty} />
-              ))}
-            </div>
-          )}
+        {/* Faculty Grid - using native browser scrolling */}
+        <div className="overflow-x-auto no-scrollbar pb-4">
+          <div
+            className="flex gap-5 pr-2 pl-1"
+            style={{ minWidth: "min-content" }}
+          >
+            {filteredFaculty.map((faculty) => (
+              <FacultyCard key={faculty.id} faculty={faculty} />
+            ))}
+          </div>
         </div>
+
+        {/* Empty State */}
+        {filteredFaculty.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-500">
+              No faculty members found in this category.
+            </p>
+          </div>
+        )}
       </div>
+
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }

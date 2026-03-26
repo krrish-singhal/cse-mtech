@@ -36,7 +36,7 @@ export default function Infrastructure() {
   ];
 
   return (
-    <section id="infrastructure" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="infrastructure" className="py-20 bg-linear-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-16">
@@ -147,7 +147,7 @@ export default function Infrastructure() {
                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-300"
                   >
                     <div
-                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
                       style={{ backgroundColor: '#F26520' }}
                     >
                       <span className="text-white text-xs font-bold">✓</span>

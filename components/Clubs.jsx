@@ -1,27 +1,42 @@
-import React, { useState } from "react";
-import { ExternalLink, Zap } from "lucide-react";
+import React from "react";
 
 export default function Clubs() {
-  const [hoveredClub, setHoveredClub] = useState(null);
-
   const clubs = [
     {
       id: 1,
-      name: "NextGen Supercomputing Club",
-      logo: "🖥️",
+      name: "Data Science & Deep Learning (DSDL)",
       description:
-        "NextGen Club is a community of passionate learners aspiring to become production-ready ML and AI engineers. The club focuses on bridging the gap between theory and real-world implementation through hands-on projects, technical sessions, collaborative learning, and internship opportunities.",
-      members: "150+",
-      website: "#website",
+        "A technical community focused on practical data science, deep learning fundamentals, model experimentation, and deployment workflows through guided projects and mentorship.",
+      tags: ["Machine Learning", "AI", "Deep Learning"],
+      image:
+        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=400&fit=crop",
     },
     {
       id: 2,
-      name: "DevUp Club",
-      logo: "⚡",
+      name: "Google Developer Groups (GDG)",
       description:
-        "DevUp Club is a vibrant technical community committed to empowering students across domains like CP/DSA, Web Development, Android Development, UI/UX, and Data Science through workshops and real-world projects.",
-      members: "120+",
-      website: "#website",
+        "A peer-driven developer group for Google technologies with coding sessions, study jams, speaker events, and product-focused hands-on learning.",
+      tags: ["Web", "Android", "Cloud"],
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop",
+    },
+    {
+      id: 3,
+      name: "Microsoft Learn Student Ambassadors (MLSA)",
+      description:
+        "A student ambassador community that builds technical leadership through Microsoft learn paths, workshops, hackathons, and collaborative innovation initiatives.",
+      tags: ["Azure", "Leadership", "Hackathons"],
+      image:
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=400&fit=crop",
+    },
+    {
+      id: 4,
+      name: "FOSSCU (Open Source Community)",
+      description:
+        "An open-source focused community encouraging collaborative development, contribution practices, version control workflows, and project maintenance discipline.",
+      tags: ["Open Source", "Git", "Collaboration"],
+      image:
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop",
     },
   ];
 
@@ -29,127 +44,68 @@ export default function Clubs() {
     <section id="clubs" className="py-20 bg-linear-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">Our Clubs</h2>
+        <div className="mb-14">
+          <h2 className="text-4xl font-bold text-gray-900 mb-2">
+            Technical Clubs
+          </h2>
           <div
             className="w-24 h-1 rounded-full"
             style={{ backgroundColor: "#F26520" }}
           ></div>
         </div>
 
-        {/* Clubs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Numbered rows */}
+        <div className="space-y-6">
           {clubs.map((club) => (
             <div
               key={club.id}
-              onMouseEnter={() => setHoveredClub(club.id)}
-              onMouseLeave={() => setHoveredClub(null)}
-              className="relative group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
+              className="rounded-2xl border border-gray-200 bg-white overflow-hidden"
             >
-              {/* Background gradient overlay */}
-              <div
-                className="absolute inset-0 transition-opacity duration-300"
-                style={{
-                  backgroundColor:
-                    hoveredClub === club.id ? "#F26520" : "#F9FAFB",
-                }}
-              ></div>
-
-              <div className="relative p-8 z-10">
-                {/* Logo and Title */}
-                <div className="flex items-start space-x-4 mb-6">
-                  <div
-                    className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-all duration-300 transform ${
-                      hoveredClub === club.id ? "scale-110 rotate-12" : ""
-                    }`}
-                    style={{
-                      backgroundColor:
-                        hoveredClub === club.id
-                          ? "rgba(255,255,255,0.2)"
-                          : "#F0F0F0",
-                    }}
-                  >
-                    {club.logo}
-                  </div>
-                  <div>
-                    <h3
-                      className={`text-2xl font-bold transition-colors duration-300 ${
-                        hoveredClub === club.id ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {club.name}
-                    </h3>
-                    <p
-                      className={`text-sm font-semibold transition-colors duration-300 ${
-                        hoveredClub === club.id
-                          ? "text-blue-100"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      {club.members} Active Members
-                    </p>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_220px]">
+                {/* Number band */}
+                <div className="md:border-r border-gray-200 p-8 md:p-10 flex items-center justify-center">
+                  <span className="text-5xl md:text-6xl font-bold text-gray-200 select-none">
+                    {String(club.id).padStart(2, "0")}
+                  </span>
                 </div>
 
-                {/* Description */}
-                <p
-                  className={`leading-relaxed mb-6 transition-colors duration-300 text-justify ${
-                    hoveredClub === club.id ? "text-blue-50" : "text-gray-700"
-                  }`}
-                >
-                  {club.description}
-                </p>
+                {/* Content */}
+                <div className="p-8 md:p-10 md:border-r border-gray-200">
+                  <h3 className="text-3xl font-bold text-gray-900 leading-tight">
+                    {club.name}
+                  </h3>
+                  <p className="mt-4 text-gray-600 leading-relaxed text-justify">
+                    {club.description}
+                  </p>
 
-                {/* Features */}
-                <div className="space-y-3 mb-6">
-                  {[
-                    "Hands-on workshops & training",
-                    "Industry expert mentorship",
-                    "Collaborative projects",
-                  ].map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-2">
-                      <Zap
-                        size={16}
-                        className={`transition-colors duration-300 ${
-                          hoveredClub === club.id
-                            ? "text-white"
-                            : "text-orange-500"
-                        }`}
-                      />
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {club.tags.map((tag) => (
                       <span
-                        className={`text-sm transition-colors duration-300 ${
-                          hoveredClub === club.id
-                            ? "text-white"
-                            : "text-gray-700"
-                        }`}
+                        key={tag}
+                        className="px-4 py-2 rounded-full text-sm font-semibold border"
+                        style={{
+                          borderColor: "rgba(22, 66, 101, 0.18)",
+                          backgroundColor: "rgba(22, 66, 101, 0.06)",
+                          color: "#164265",
+                        }}
                       >
-                        {feature}
+                        {tag}
                       </span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
-                {/* Visit Website Button */}
-                <button
-                  className={`inline-flex items-center space-x-2 px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
-                    hoveredClub === club.id
-                      ? "bg-white text-orange-600 hover:bg-gray-100"
-                      : "bg-orange-600 text-white hover:bg-orange-700"
-                  }`}
-                  style={{
-                    backgroundColor:
-                      hoveredClub === club.id ? "white" : "#F26520",
-                    color: hoveredClub === club.id ? "#F26520" : "white",
-                  }}
-                >
-                  <span>Website</span>
-                  <ExternalLink
-                    size={16}
-                    className={`transition-transform duration-300 ${
-                      hoveredClub === club.id ? "translate-x-1" : ""
-                    }`}
-                  />
-                </button>
+                {/* Image */}
+                <div className="p-8 md:p-10 flex items-center justify-center">
+                  <div className="w-28 h-28 rounded-2xl overflow-hidden border border-gray-200 bg-gray-50">
+                    <img
+                      src={club.image}
+                      alt={club.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           ))}
