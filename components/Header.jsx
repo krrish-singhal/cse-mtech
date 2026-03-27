@@ -36,25 +36,10 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/95 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-3 shrink-0">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white transition-transform duration-300 hover:scale-110"
-              style={{ backgroundColor: "#164265" }}
-            >
-              CS
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold" style={{ color: "#164265" }}>
-                CSE-MTech
-              </h1>
-              <p className="text-xs text-gray-600">AI & ML Program</p>
-            </div>
-          </div>
+        <div className="flex items-center justify-between h-16">          
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center  mx-auto space-x-1">
             {navItems.map((item) => (
               <a
                 key={item.label}

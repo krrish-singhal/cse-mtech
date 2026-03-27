@@ -1,123 +1,158 @@
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from 'react';
 
 export default function Highlights() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
   const highlights = [
     {
       id: 1,
-      title: 'Cutting-Edge Curriculum',
+      title: 'Driving Supercomputing with DGX – Centre of Excellence',
       description:
-        'Gain in-depth knowledge and hands-on expertise in advanced Artificial Intelligence technologies, including Generative AI, Agentic Systems, Artificial Intelligence & Machine Learning, Deep Learning, and Autonomous Intelligent Systems. The curriculum is designed to equip students with strong theoretical foundations and practical skills aligned with emerging industry demands and next-generation AI innovations.',
-      image:
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop',
+        'Powered by the NVIDIA DGX A100, this Centre of Excellence brings enterprise-level AI infrastructure directly to students. It enables training of large-scale deep learning models, high-speed data processing, and real-time AI deployment. The facility acts as a launchpad for cutting-edge research, innovation, and industry-driven AI solutions.',
+      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?fit=crop&w=400&h=400&q=80',
     },
     {
       id: 2,
-      title: 'Supercomputing NVIDIA Centre of Excellence',
+      title: 'PARAM Shavak – High Performance Computing Lab',
       description:
-        'Access high-performance computing infrastructure through the NVIDIA Centre of Excellence, enabling students to work on large-scale AI models, intelligent automation systems, and real-world research problems. NVIDIA DGX A100 supercomputing platforms provide hands-on exposure to advanced AI development, deep learning experimentation, and high-performance computing environments.',
-      image:
-        'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        'The PARAM Shavak supercomputer, developed by C-DAC, empowers students with hands-on experience in high-performance computing and parallel processing. It supports complex simulations, big data analysis, and scientific computing—bridging the gap between academic learning and real-world computational challenges.',
+      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?fit=crop&w=400&h=400&q=80',
     },
     {
       id: 3,
-      title: 'Industry Connect',
+      title: 'Strong Industry Connect & Collaboration',
       description:
-        'Benefit from continuous guidance, mentorship, and technical supervision from AI innovation labs and experienced industry experts. The program integrates industry-driven case studies, live projects, and collaborative learning opportunities to bridge the gap between academic knowledge and real-world applications.',
-      image:
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+        'The department maintains a robust industry ecosystem, connecting students with leading tech companies, startups, and R&D organizations. Through internships, live projects, expert talks, and mentorship, students gain real-world exposure, making them industry-ready and highly employable from day one.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=400&h=400&q=80',
     },
     {
       id: 4,
-      title: 'Global & Industry Exposure',
+      title: 'Curriculum Highlights',
       description:
-        'Experience a seamless transition from classroom learning to corporate environments through global industry exposure, expert interactions, internships, and collaborative research studies. The program also provides 100% placement assistance, helping students connect with leading technology companies and build successful careers in Artificial Intelligence and emerging technologies.',
-      image:
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+        'The M.Tech (CSE) curriculum is designed to deliver a perfect blend of strong fundamentals, emerging technologies, and real-world application. Students build expertise in core areas like Data Structures, DBMS, and Software Engineering, while advancing into AI, Machine Learning, Blockchain, and Quantum Computing.\n\nThe program emphasizes flexibility and experiential learning, offering industry projects, research opportunities, and full-semester internships. With integrated courses in Research Methodology, Scientific Writing, Ethics, and IPR, students develop both technical depth and professional excellence.',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?fit=crop&w=400&h=400&q=80',
+    },
+  ];
+
+  const advancedLabs = [
+    {
+      id: 1,
+      title: 'AI & Robotics Lab',
+      description: 'State-of-the-art facility equipped with advanced robotic arms, autonomous navigation systems, and edge AI compute devices for physical world AI applications.',
+      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 2,
+      title: 'Quantum Computing Research Lab',
+      description: 'Focused on quantum algorithms, cryptography, and quantum machine learning. Students access cloud-based quantum processors and simulators for next-gen research.',
+      image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 3,
+      title: 'Cognitive Science & HCI Lab',
+      description: 'Dedicated to exploring seamless human-computer interaction, brain-computer interfaces (BCI), and developing empathetic, user-centric AI systems.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 4,
+      title: 'Cyber Security & Forensics Lab',
+      description: 'A fully isolated environment for studying malware analysis, network defense, ethical hacking, and securing AI models against adversarial attacks.',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?fit=crop&w=400&h=400&q=80',
     },
   ];
 
   return (
-    <section id="highlights" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="highlights" className="py-20 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">
-            Department's Highlights
+        <div className="mb-14 relative w-full">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight">
+            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+              Department's
+            </span>
+            {' '}Highlights
           </h2>
-          <div
-            className="w-24 h-1 rounded-full"
-            style={{ backgroundColor: '#F26520' }}
-          ></div>
+          
+        
         </div>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {highlights.map((highlight, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {highlights.map((highlight) => (
             <div
               key={highlight.id}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="group flex flex-col space-y-6 cursor-pointer"
+              className="bg-white rounded-[20px] p-6 lg:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300"
             >
               {/* Image Container */}
-              <div className="relative overflow-hidden rounded-xl shadow-lg">
+              <div className="shrink-0 w-32 h-32 md:w-[130px] md:h-[130px] overflow-hidden rounded-[16px] shadow-sm">
                 <img
                   src={highlight.image}
                   alt={highlight.title}
-                  className={`w-full h-64 object-cover transition-transform duration-500 ${
-                    hoveredIndex === index ? 'scale-110' : 'scale-100'
-                  }`}
+                  className="w-full h-full object-cover"
                 />
-                <div
-                  className={`absolute inset-0 bg-black transition-opacity duration-500 ${
-                    hoveredIndex === index ? 'opacity-10' : 'opacity-0'
-                  }`}
-                ></div>
               </div>
 
               {/* Content */}
-              <div className="space-y-4">
-                <h3
-                  className={`text-2xl font-bold transition-colors duration-300 ${
-                    hoveredIndex === index
-                      ? 'text-blue-900'
-                      : 'text-gray-900'
-                  }`}
-                  style={{
-                    color: hoveredIndex === index ? '#164265' : '#111827',
-                  }}
-                >
+              <div className="flex-1 flex flex-col justify-center h-full pt-1 sm:pt-2">
+                <h3 className="text-xl md:text-[22px] font-bold text-[#0f172a] mb-3 leading-snug">
                   {highlight.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
+                <p className="text-[#475569] text-[15px] leading-relaxed whitespace-pre-line">
                   {highlight.description}
                 </p>
-                <div
-                  className={`inline-flex items-center space-x-2 font-semibold transition-all duration-300 ${
-                    hoveredIndex === index ? 'translate-x-2' : ''
-                  }`}
-                  style={{ color: '#F26520' }}
-                >
-                  <span>Learn more</span>
-                  <ArrowRight size={16} />
-                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Advanced Labs Section Header */}
+        <div className="mt-28 mb-14 relative w-full">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight">
+            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+              Advanced
+            </span>
+            {' '}Labs
+          </h2>
+          
+          
+        </div>
+
+        {/* Advanced Labs Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+          {advancedLabs.map((lab) => (
+            <div
+              key={lab.id}
+              className="bg-white rounded-[20px] p-6 lg:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300"
+            >
+              {/* Image Container */}
+              <div className="shrink-0 w-32 h-32 md:w-[130px] md:h-[130px] overflow-hidden rounded-[16px] shadow-sm">
+                <img
+                  src={lab.image}
+                  alt={lab.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 flex flex-col justify-center h-full pt-1 sm:pt-2">
+                <h3 className="text-xl md:text-[22px] font-bold text-[#0f172a] mb-3 leading-snug">
+                  {lab.title}
+                </h3>
+                <p className="text-[#475569] text-[15px] leading-relaxed whitespace-pre-line">
+                  {lab.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Additional Info */}
-        <div className="mt-20 text-center space-y-6">
-          <h3 className="text-2xl font-bold text-gray-900">
+        <div className="mt-28 text-center space-y-6">
+          <h3 className="text-[28px] font-bold text-[#0f172a]">
             Why Choose Our Program?
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
               {
-                number: '4+',
+                number: '18+',
                 label: 'Years of Excellence',
               },
               {
@@ -131,15 +166,15 @@ export default function Highlights() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="p-8 rounded-[20px] bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <p
-                  className="text-4xl font-bold mb-2"
+                  className="text-5xl font-extrabold mb-3"
                   style={{ color: '#F26520' }}
                 >
                   {stat.number}
                 </p>
-                <p className="text-gray-700 font-semibold">{stat.label}</p>
+                <p className="text-[#0f172a] text-lg font-bold">{stat.label}</p>
               </div>
             ))}
           </div>
