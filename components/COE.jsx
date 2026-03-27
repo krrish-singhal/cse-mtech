@@ -1,113 +1,350 @@
 import React, { useState } from 'react';
-import { Play, BookOpen, Users } from 'lucide-react';
+import { ArrowRight, Code2, Layers, Rocket, Database, Zap, Server } from 'lucide-react';
 
 export default function COE() {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [activeCard, setActiveCard] = useState(null);
+
+  const centres = [
+    {
+      id: 'ios-lab',
+      title: 'iOS Development Lab',
+      image: '/images/ios-lab.png',
+      description:
+        'The iOS Development Lab is a state-of-the-art innovation space dedicated to building world-class applications for the Apple ecosystem. Equipped with modern Mac systems, the lab enables students to master Swift, UIKit/SwiftUI, and end-to-end app development.',
+      detail:
+        'Students work on real-world app projects, gaining hands-on experience in performance optimization, API integration, and App Store readiness.',
+      accentColor: '#164265',
+      gradientFrom: '#164265',
+      gradientTo: '#1e6fa0',
+      tags: [
+        { label: 'Swift & SwiftUI', icon: Code2 },
+        { label: 'UI/UX Design', icon: Layers },
+        { label: 'App Store Ready', icon: Rocket },
+      ],
+      stats: [
+        { value: '30+', label: 'Mac Systems' },
+        { value: '50+', label: 'Apps Built' },
+        { value: '100%', label: 'Hands-on' },
+      ],
+    },
+    {
+      id: 'dgx-centre',
+      title: 'Supercomputing with DGX',
+      image: '/images/dgx-supercomputer.png',
+      description:
+        'Powered by the NVIDIA DGX A100, this Centre of Excellence brings enterprise-level AI infrastructure directly to students. It enables training of large-scale deep learning models and real-time AI deployment.',
+      detail:
+        'The facility acts as a launchpad for cutting-edge research, innovation, and industry-driven AI solutions.',
+      accentColor: '#164265',
+      gradientFrom: '#164265',
+      gradientTo: '#1e6fa0',
+      tags: [
+        { label: 'NVIDIA DGX A100', icon: Server },
+        { label: 'Deep Learning', icon: Database },
+        { label: 'Real-time AI', icon: Zap },
+      ],
+      stats: [
+        { value: '5 PF', label: 'Computing' },
+        { value: '320GB', label: 'GPU Memory' },
+        { value: '8x', label: 'A100 GPUs' },
+      ],
+    },
+  ];
 
   return (
-    <section id="coe" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-16">
-          <p className="text-sm text-gray-600 mb-2">Your Journey Into Advanced Computing Begins Here</p>
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Driving <span style={{ color: '#F26520' }}>Supercomputing with DGX</span>
-            <br />
-            Centre of Excellence
-          </h2>
-          <div
-            className="w-24 h-1 rounded-full"
-            style={{ backgroundColor: '#F26520' }}
-          ></div>
+    <section id="coe" className="coe-section">
+      <style>{`
+        .coe-section {
+          padding: 5rem 0;
+          background: linear-gradient(180deg, #f0f4f8 0%, #e8edf3 100%);
+          position: relative;
+          overflow: hidden;
+        }
+        .coe-container {
+          max-width: 80rem;
+          margin: 0 auto;
+          padding: 0 1.5rem;
+          position: relative;
+          z-index: 1;
+        }
+        .coe-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+        .coe-header h2 {
+          font-size: clamp(2rem, 5vw, 3rem);
+          font-weight: 800;
+          color: #164265;
+          margin-bottom: 1rem;
+          letter-spacing: -0.02em;
+        }
+        .coe-header-bar {
+          width: 5rem;
+          height: 0.25rem;
+          border-radius: 9999px;
+          background: #F26520;
+          margin: 0 auto 1.25rem;
+        }
+        .coe-header p {
+          color: #6b7280;
+          font-size: 1.05rem;
+          max-width: 38rem;
+          margin: 0 auto;
+          line-height: 1.65;
+        }
+
+        /* Side by side grid */
+        .coe-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
+
+        /* Card */
+        .coe-card {
+          background: #fff;
+          border-radius: 1.25rem;
+          overflow: hidden;
+          box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+          border: 1px solid rgba(0,0,0,0.04);
+          transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
+        .coe-card:hover {
+          box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+          transform: translateY(-6px);
+        }
+
+        /* Image */
+        .coe-card-image {
+          position: relative;
+          overflow: hidden;
+          height: 280px;
+        }
+        .coe-card-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .coe-card:hover .coe-card-image img {
+          transform: scale(1.08);
+        }
+        .coe-card-image-overlay {
+          position: absolute;
+          inset: 0;
+          transition: opacity 0.4s ease;
+        }
+
+
+        /* Content */
+        .coe-card-body {
+          padding: 1.5rem 1.75rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          position: relative;
+        }
+
+        .coe-card-title {
+          font-size: 1.35rem;
+          font-weight: 800;
+          color: #164265;
+          margin-bottom: 0.85rem;
+          line-height: 1.25;
+          letter-spacing: -0.01em;
+        }
+        .coe-card-desc {
+          color: #4b5563;
+          font-size: 0.855rem;
+          line-height: 1.65;
+          margin-bottom: 0.5rem;
+        }
+        .coe-card-detail {
+          color: #6b7280;
+          font-size: 0.82rem;
+          line-height: 1.6;
+          margin-bottom: 1.15rem;
+        }
+
+        /* Stats */
+        .coe-stats {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1.15rem;
+          padding: 0.85rem 0;
+          border-top: 1px solid #f3f4f6;
+          border-bottom: 1px solid #f3f4f6;
+        }
+        .coe-stat {
+          text-align: center;
+          flex: 1;
+        }
+        .coe-stat-val {
+          font-size: 1.2rem;
+          font-weight: 800;
+          display: block;
+          margin-bottom: 0.15rem;
+          transition: transform 0.3s ease;
+        }
+        .coe-card:hover .coe-stat-val {
+          transform: scale(1.08);
+        }
+        .coe-stat-lbl {
+          font-size: 0.6rem;
+          color: #9ca3af;
+          text-transform: uppercase;
+          letter-spacing: 0.07em;
+          font-weight: 600;
+        }
+
+        /* Tags */
+        .coe-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          margin-bottom: 1.15rem;
+        }
+        .coe-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          padding: 0.3rem 0.7rem;
+          border-radius: 0.4rem;
+          font-size: 0.72rem;
+          font-weight: 600;
+          border: 1px solid;
+          transition: all 0.3s ease;
+          cursor: default;
+        }
+        .coe-tag:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+        }
+
+        /* CTA */
+        .coe-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.4rem;
+          border-radius: 0.6rem;
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          width: fit-content;
+          margin-top: auto;
+        }
+        .coe-cta:hover {
+          transform: translateX(3px);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .coe-cta svg {
+          transition: transform 0.3s ease;
+        }
+        .coe-cta:hover svg {
+          transform: translateX(3px);
+        }
+
+        /* Decorative glow */
+        .coe-glow {
+          position: absolute;
+          width: 160px;
+          height: 160px;
+          border-radius: 50%;
+          filter: blur(70px);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+          right: -40px;
+          bottom: -40px;
+          z-index: 0;
+        }
+        .coe-card:hover .coe-glow {
+          opacity: 0.12;
+        }
+
+        @media (max-width: 900px) {
+          .coe-grid {
+            grid-template-columns: 1fr;
+            max-width: 550px;
+            margin: 0 auto;
+          }
+        }
+        @media (max-width: 640px) {
+          .coe-section {
+            padding: 3rem 0;
+          }
+          .coe-card-image {
+            height: 180px;
+          }
+          .coe-card-body {
+            padding: 1.25rem;
+          }
+        }
+      `}</style>
+
+      <div className="coe-container">
+        <div className="coe-header">
+          <h2>Centres of Excellence</h2>
+          <div className="coe-header-bar"></div>
+          <p>
+            World-class facilities empowering students with cutting-edge technology
+            and industry-grade infrastructure.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Content */}
-          <div className="space-y-6">
-            <p className="text-gray-700 leading-relaxed text-justify">
-              Powered by the NVIDIA DGX A100 Supercomputer, KIET enables enterprise-grade
-              AI computing for advanced research in the field of AI. Students build and
-              deploy complex AI models on industry-level GPU infrastructure. A hub for
-              innovation, industry collaboration, and next-generation AI excellence.
-            </p>
-            <button
-              className="px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-              style={{ backgroundColor: '#F26520' }}
-            >
-              View More
-            </button>
-          </div>
-
-          {/* Video Placeholder */}
-          <div
-            className="relative rounded-xl overflow-hidden shadow-2xl group cursor-pointer"
-            onMouseEnter={() => setHoveredCard('video')}
-            onMouseLeave={() => setHoveredCard(null)}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop"
-              alt="DGX Supercomputing Centre"
-              className={`w-full h-96 object-cover transition-all duration-500 ${
-                hoveredCard === 'video' ? 'scale-110' : 'scale-100'
-              }`}
-            />
+        <div className="coe-grid">
+          {centres.map((centre) => (
             <div
-              className={`absolute inset-0 bg-black transition-opacity duration-300 flex items-center justify-center ${
-                hoveredCard === 'video' ? 'opacity-40' : 'opacity-0'
-              }`}
+              key={centre.id}
+              className="coe-card"
+              onMouseEnter={() => setActiveCard(centre.id)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              <Play
-                size={64}
-                className={`text-white transition-all duration-300 ${
-                  hoveredCard === 'video' ? 'scale-100' : 'scale-80'
-                }`}
-                fill="white"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: BookOpen,
-              title: 'Advanced Training',
-              description:
-                'Hands-on training with cutting-edge GPU-accelerated technologies and AI frameworks for deep learning and advanced computing.',
-            },
-            {
-              icon: Users,
-              title: 'Expert Mentorship',
-              description:
-                'Guidance from industry experts and faculty mentors with extensive experience in supercomputing and AI research.',
-            },
-            {
-              icon: BookOpen,
-              title: 'Research Opportunities',
-              description:
-                'Collaborate on groundbreaking AI research projects and contribute to innovations in machine learning and data science.',
-            },
-          ].map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={index}
-                className="p-8 rounded-xl border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-gray-300 transform hover:-translate-y-2"
-              >
+              {/* Image */}
+              <div className="coe-card-image">
+                <img src={centre.image} alt={centre.title} />
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: '#F26520' }}
-                >
-                  <Icon size={24} className="text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-700">{feature.description}</p>
+                  className="coe-card-image-overlay"
+                  style={{
+                    background: `linear-gradient(180deg, transparent 30%, ${centre.gradientFrom}aa 100%)`,
+                    opacity: activeCard === centre.id ? 0.7 : 0.4,
+                  }}
+                />
+
               </div>
-            );
-          })}
+
+              {/* Body */}
+              <div className="coe-card-body">
+                <div className="coe-glow" style={{ background: centre.accentColor }} />
+
+
+
+                <h3 className="coe-card-title">{centre.title}</h3>
+                <p className="coe-card-desc">{centre.description}</p>
+                <p className="coe-card-detail">{centre.detail}</p>
+
+                {/* Stats */}
+                <div className="coe-stats">
+                  {centre.stats.map((s) => (
+                    <div className="coe-stat" key={s.label}>
+                      <span className="coe-stat-val" style={{ color: centre.accentColor }}>
+                        {s.value}
+                      </span>
+                      <span className="coe-stat-lbl">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
