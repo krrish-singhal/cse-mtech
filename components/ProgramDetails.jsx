@@ -1,232 +1,168 @@
-import React, { useState } from 'react';
-import { ChevronDown, Clock, BookOpen, Users } from 'lucide-react';
+import React from 'react';
+import { Target, Compass, Zap, BookOpen, Brain, Settings, FileSearch, Monitor, Shield, Users, Briefcase, GraduationCap } from 'lucide-react';
 
 export default function ProgramDetails() {
-  const [expandedSemester, setExpandedSemester] = useState(1);
-
-  const semesters = [
+  const gains = [
     {
-      id: 1,
-      name: 'Semester 1',
-      duration: '6 months',
-      courses: [
-        'Advanced Algorithms & Data Structures',
-        'Mathematics for AI',
-        'Fundamentals of Machine Learning',
-        'Database Management Systems',
-      ],
+      id: 'PO1',
+      title: 'Advanced Knowledge',
+      desc: 'Apply in-depth knowledge of computer science, including AI, data science, algorithms, and software systems, to solve complex problems.',
+      icon: Brain,
     },
     {
-      id: 2,
-      name: 'Semester 2',
-      duration: '6 months',
-      courses: [
-        'Deep Learning & Neural Networks',
-        'Natural Language Processing',
-        'Computer Vision',
-        'Reinforcement Learning',
-      ],
+      id: 'PO2',
+      title: 'Problem Analysis',
+      desc: 'Identify, analyze, and formulate solutions for complex computing problems using logical reasoning and modern techniques.',
+      icon: FileSearch,
     },
     {
-      id: 3,
-      name: 'Semester 3',
-      duration: '6 months',
-      courses: [
-        'Advanced ML Techniques',
-        'Generative AI & LLMs',
-        'AI Ethics & Responsible AI',
-        'Cloud Computing & Distributed Systems',
-      ],
+      id: 'PO3',
+      title: 'Design & Development',
+      desc: 'Design innovative and efficient computing systems, applications, or processes that meet specified needs with real-world constraints.',
+      icon: Settings,
     },
     {
-      id: 4,
-      name: 'Semester 4',
-      duration: '6 months',
-      courses: [
-        'Thesis/Research Project',
-        'Industry Internship',
-        'Capstone Project',
-        'Elective Courses',
-      ],
+      id: 'PO4',
+      title: 'Research Capability',
+      desc: 'Conduct research involving literature review, experimentation, and data analysis to generate meaningful insights and publishable outcomes.',
+      icon: BookOpen,
     },
-  ];
-
-  const programInfo = [
-    { icon: Clock, label: 'Duration', value: '2 Years' },
-    { icon: BookOpen, label: 'Credits', value: '80' },
-    { icon: Users, label: 'Batch Size', value: '60 Students' },
-    { icon: Clock, label: 'Classes', value: 'Evening (5:30 PM - 8:30 PM)' },
+    {
+      id: 'PO5',
+      title: 'Modern Tool Usage',
+      desc: 'Use advanced tools, platforms, and technologies such as AI frameworks, cloud computing, DevOps, and HPC systems effectively.',
+      icon: Monitor,
+    },
+    {
+      id: 'PO6',
+      title: 'Professional Ethics',
+      desc: 'Understand and apply ethical principles, intellectual property rights, and professional responsibilities in computing practices.',
+      icon: Shield,
+    },
+    {
+      id: 'PO7',
+      title: 'Communication Skills',
+      desc: 'Communicate technical ideas effectively through reports, presentations, and collaboration in multidisciplinary teams.',
+      icon: Users,
+    },
+    {
+      id: 'PO8',
+      title: 'Project Management',
+      desc: 'Apply management principles to plan, execute, and deliver projects efficiently in individual and team settings.',
+      icon: Briefcase,
+    },
+    {
+      id: 'PO9',
+      title: 'Industry Readiness',
+      desc: 'Demonstrate practical skills through internships, projects, and industry exposure to perform effectively in professional environments.',
+      icon: Zap,
+    },
+    {
+      id: 'PO10',
+      title: 'Lifelong Learning',
+      desc: 'Engage in continuous learning to adapt to rapidly evolving technologies and maintain professional competence.',
+      icon: GraduationCap,
+    },
   ];
 
   return (
-    <section id="details" className="py-20 bg-white">
+    <section id="details" className="py-24 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <div className="mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-2">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#164265] mb-4 tracking-tight">
             Program Details
           </h2>
-          <div
-            className="w-24 h-1 rounded-full"
-            style={{ backgroundColor: '#F26520' }}
-          ></div>
+          <div className="w-24 h-1.5 rounded-full mx-auto" style={{ backgroundColor: '#F26520' }}></div>
         </div>
 
-        {/* Program Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {programInfo.map((info, index) => {
-            const Icon = info.icon;
-            return (
-              <div
-                key={index}
-                className="p-6 rounded-xl border border-gray-200 transition-all duration-300 hover:shadow-lg hover:border-gray-300 transform hover:-translate-y-2"
-              >
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                  style={{ backgroundColor: '#F26520' }}
-                >
-                  <Icon size={24} className="text-white" />
-                </div>
-                <p className="text-sm text-gray-600 mb-1">{info.label}</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {info.value}
-                </p>
+        {/* Vision & Mission Split Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-24">
+
+          {/* Where We Aim (Vision) */}
+          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
+            <div className="absolute -right-8 -bottom-8 opacity-[0.03] text-[#F26520] transform group-hover:scale-110 transition-transform duration-700">
+              <Target size={200} />
+            </div>
+
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-14 h-14 rounded-xl bg-[#F26520]/10 flex items-center justify-center text-[#F26520]">
+                <Target size={32} strokeWidth={2.5} />
               </div>
-            );
-          })}
-        </div>
-
-        {/* Curriculum */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">
-            Curriculum Overview
-          </h3>
-
-          <div className="space-y-4">
-            {semesters.map((semester) => (
-              <div
-                key={semester.id}
-                className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg"
-              >
-                <button
-                  onClick={() =>
-                    setExpandedSemester(
-                      expandedSemester === semester.id ? null : semester.id
-                    )
-                  }
-                  className="w-full p-6 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors duration-300"
-                >
-                  <div className="flex items-center space-x-4">
-                    <div
-                      className="w-4 h-4 rounded-full"
-                      style={{ backgroundColor: '#F26520' }}
-                    ></div>
-                    <div className="text-left">
-                      <h4 className="font-bold text-gray-900">
-                        {semester.name}
-                      </h4>
-                      <p className="text-sm text-gray-600">
-                        {semester.courses.length} courses
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className={`transition-transform duration-300 ${
-                      expandedSemester === semester.id ? 'rotate-180' : ''
-                    }`}
-                  >
-                    <ChevronDown size={20} style={{ color: '#F26520' }} />
-                  </div>
-                </button>
-
-                {expandedSemester === semester.id && (
-                  <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                    <div className="space-y-3">
-                      {semester.courses.map((course, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start space-x-3 p-3 rounded-lg hover:bg-white transition-colors duration-300 cursor-pointer"
-                        >
-                          <div
-                            className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                            style={{ backgroundColor: '#F26520' }}
-                          ></div>
-                          <p className="text-gray-700 font-medium">{course}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+              <h3 className="text-3xl font-bold text-[#164265]">Where We Aim</h3>
+            </div>
+            <p className="text-lg text-gray-700 leading-relaxed font-medium relative z-10">
+              To be a center of excellence in Computer Science and Engineering, fostering innovation, advanced research, and industry-ready professionals who contribute to technological advancement and societal development at a global level.
+            </p>
           </div>
-        </div>
 
-        {/* Eligibility & Admission */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="p-8 rounded-xl border border-gray-200 bg-gradient-to-br from-blue-50 to-transparent">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Eligibility Criteria
-            </h3>
-            <ul className="space-y-4">
+          {/* How We Work (Mission) */}
+          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
+            <div className="absolute -right-10 -bottom-10 opacity-[0.03] text-[#164265] transform group-hover:-rotate-12 transition-transform duration-700">
+              <Compass size={220} />
+            </div>
+
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-14 h-14 rounded-xl bg-[#164265]/10 flex items-center justify-center text-[#164265]">
+                <Compass size={32} strokeWidth={2.5} />
+              </div>
+              <h3 className="text-3xl font-bold text-[#164265]">How We Work</h3>
+            </div>
+            <ul className="space-y-4 text-gray-700 relative z-10">
               {[
-                'Bachelor\'s degree in CS/IT/Electronics/Related Field',
-                'Minimum 50% marks in Bachelor\'s degree',
-                'GATE Qualified (CS/IT category)',
-                'Work experience (preferred but not mandatory)',
-              ].map((criteria, idx) => (
-                <li key={idx} className="flex items-start space-x-3">
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ backgroundColor: '#F26520' }}
-                  >
-                    <span className="text-white text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-gray-700">{criteria}</span>
+                'To deliver high-quality education through a strong foundation in computing, emerging technologies, and interdisciplinary learning.',
+                'To promote research, innovation, and critical thinking through advanced labs and industry collaboration.',
+                'To develop industry-ready professionals with practical skills, ethical values, and problem-solving abilities.',
+                'To encourage lifelong learning and leadership, preparing students for global challenges in technology and society.'
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start">
+                  <span className="w-2 h-2 rounded-full bg-[#F26520] mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="text-base leading-snug">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-8 rounded-xl border border-gray-200 bg-gradient-to-br from-orange-50 to-transparent">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Admission Process
+        </div>
+
+        {/* What You Gain (Program Outcomes) */}
+        <div>
+          <div className="text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-[#164265] mb-4">
+              What You Gain
             </h3>
-            <ol className="space-y-4">
-              {[
-                'Submit Online Application',
-                'GATE Score Verification',
-                'Written Test (if required)',
-                'Personal Interview',
-                'Merit List Announcement',
-                'Document Verification & Admission',
-              ].map((step, idx) => (
-                <li key={idx} className="flex items-start space-x-3">
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 font-bold text-white"
-                    style={{ backgroundColor: '#164265' }}
-                  >
-                    {idx + 1}
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              10 crucial program outcomes designed to transform you into a global technology leader.
+            </p>
+          </div>
+
+          {/* Using grid-cols-5 on large screens to fit 10 items elegantly (5x2) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {gains.map((gain) => {
+              const Icon = gain.icon;
+              return (
+                <div
+                  key={gain.id}
+                  className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 hover:border-[#F26520]/30 transition-all duration-300 group flex flex-col h-full"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-[#164265] group-hover:bg-[#164265] group-hover:text-white transition-colors duration-300">
+                      <Icon size={24} strokeWidth={2} />
+                    </div>
+                    <span className="text-xs font-black text-gray-200 group-hover:text-[#F26520] transition-colors duration-300">
+                      {gain.id}
+                    </span>
                   </div>
-                  <span className="text-gray-700">{step}</span>
-                </li>
-              ))}
-            </ol>
+                  <h4 className="text-lg font-bold text-[#164265] mb-3 leading-tight">{gain.title}</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed flex-grow">{gain.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center space-y-4">
-          <p className="text-gray-700 text-lg">Ready to start your journey?</p>
-          <button
-            className="px-8 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block"
-            style={{ backgroundColor: '#F26520' }}
-          >
-            Apply Now
-          </button>
-        </div>
       </div>
     </section>
   );
 }
-  
