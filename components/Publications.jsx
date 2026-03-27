@@ -53,7 +53,6 @@ export default function Publications() {
                 key={category.id}
                 className="p-8 rounded-xl transition-all duration-300 cursor-pointer shadow-md bg-white border border-gray-200 hover:border-[#F26520] hover:shadow-lg"
               >
-                
                 <div className="text-4xl font-bold mb-2 text-[#F26520]">
                   {category.count}
                 </div>
