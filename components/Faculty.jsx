@@ -36,7 +36,11 @@ const imageKeyAliases = {
 };
 
 const facultyMembers = [
-  { id: 1, name: "Dr. Vineet Kumar Sharma", designation: "Professor & Dean" },
+  {
+    id: 1,
+    name: "Dr. Vineet Kumar Sharma",
+    designation: "Senior Professor & Dean",
+  },
   { id: 2, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
   {
     id: 3,
@@ -160,9 +164,14 @@ const findImageForFaculty = (name) => {
 };
 
 const tierForDesignation = (designation) => {
-  if (designation.startsWith("Professor")) return "professors";
+  if (
+    designation.startsWith("Senior Professor") ||
+    designation.startsWith("Professor")
+  )
+    return "professors";
   if (designation.startsWith("Associate Professor")) return "associates";
   if (designation.startsWith("Assistant Professor")) return "assistants";
+  if (designation === "Adjunct Faculty") return "adjunct";
   return "others";
 };
 
@@ -170,6 +179,7 @@ const tierMeta = {
   professors: { label: "Professors", color: "#164265" },
   associates: { label: "Associate Professors", color: "#164265" },
   assistants: { label: "Assistant Professors", color: "#164265" },
+  adjunct: { label: "Adjunct Faculty", color: "#164265" },
   others: { label: "Other Roles", color: "#164265" },
 };
 
@@ -194,7 +204,13 @@ export default function Faculty() {
         acc[tier].push(faculty);
         return acc;
       },
-      { professors: [], associates: [], assistants: [], others: [] },
+      {
+        professors: [],
+        associates: [],
+        assistants: [],
+        adjunct: [],
+        others: [],
+      },
     );
   }, [facultyWithMeta]);
 
@@ -305,6 +321,14 @@ export default function Faculty() {
               count={grouped.assistants.length}
               isActive={activeFilter === "assistants"}
               color={tierMeta.assistants.color}
+              onClick={handleFilterClick}
+            />
+            <FilterButton
+              filterId="adjunct"
+              label="Adjunct Faculty"
+              count={grouped.adjunct.length}
+              isActive={activeFilter === "adjunct"}
+              color={tierMeta.adjunct.color}
               onClick={handleFilterClick}
             />
             <FilterButton
