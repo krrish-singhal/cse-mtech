@@ -192,12 +192,14 @@ export default function COE() {
           font-size: 0.855rem;
           line-height: 1.65;
           margin-bottom: 0.5rem;
+          text-align: justify;
         }
         .coe-card-detail {
           color: #6b7280;
           font-size: 0.82rem;
           line-height: 1.6;
           margin-bottom: 1.15rem;
+          text-align: justify;
         }
 
         /* Stats */
