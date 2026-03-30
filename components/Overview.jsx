@@ -69,7 +69,7 @@ export default function Overview() {
   };
 
   return (
-    <section id="overview" className="py-16 bg-white">
+    <section id="overview" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <h2 className="text-4xl font-bold text-center text-gray-900 mb-2">

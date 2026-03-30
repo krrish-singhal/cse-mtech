@@ -225,14 +225,14 @@ export default function Faculty() {
   };
 
   const FacultyCard = ({ faculty }) => (
-    <div className="group flex-none w-65 sm:w-75 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:border-gray-300 hover:shadow-lg">
-      {/* Big square photo (top) */}
-      <div className="w-full aspect-square overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 flex items-end justify-center">
+    <div className="group flex-none w-[220px] sm:w-[240px] md:w-[220px] lg:w-[176px] xl:w-[227px] rounded-xl border border-gray-100 bg-white shadow-[0_2px_15px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-gray-300 hover:shadow-xl flex flex-col relative z-0 hover:z-20">
+      {/* Top photo area - edge to edge */}
+      <div className="w-full aspect-[4/5] bg-[#ebebeb] flex items-end justify-center relative overflow-hidden rounded-t-xl">
         {faculty.imageSrc ? (
           <img
             src={faculty.imageSrc}
             alt={faculty.name}
-            className="h-full w-full object-contain object-bottom"
+            className="h-[95%] w-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
         ) : (
@@ -240,30 +240,28 @@ export default function Faculty() {
         )}
       </div>
 
-      {/* Details (below) */}
-      <div className="mt-5 min-w-0">
-        <h4 className="text-xl font-semibold text-gray-900 truncate">
+      <div className="p-3 xl:p-4 pb-4 xl:pb-5 flex flex-col items-center text-center bg-white min-w-0 flex-grow rounded-b-xl z-10 relative">
+        <h4 className="text-[14px] sm:text-[15px] xl:text-[16px] font-bold text-[#164265] mb-1 leading-tight w-full truncate">
           {faculty.name}
         </h4>
-        <p className="mt-2 text-sm font-semibold" style={{ color: "#164265" }}>
+        <p className="text-[10px] xl:text-[11px] font-medium text-gray-500 leading-snug px-1 mb-1 whitespace-normal">
           {faculty.designation}
         </p>
         {faculty.degree ? (
-          <p className="mt-2 text-xs italic text-gray-600">{faculty.degree}</p>
+          <p className="text-[9px] xl:text-[10px] text-gray-400 font-medium">{faculty.degree}</p>
         ) : null}
-        <a
-          href={`mailto:${faculty.email}`}
-          className="mt-4 inline-flex items-center gap-3 text-sm text-gray-800"
-          aria-label={`Email ${faculty.name}`}
-          title={faculty.email}
-        >
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 bg-white transition-colors duration-300 group-hover:bg-gray-50">
-            <Mail size={18} />
-          </span>
-          <span className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-300 group-hover:max-w-55 group-hover:opacity-100">
-            {faculty.email}
-          </span>
-        </a>
+        
+        {/* Email Display Effect */}
+        <div className="mt-auto pt-3 hidden sm:flex justify-center w-full px-2">
+          <div className="group/mail flex h-7 xl:h-8 items-center rounded-full border border-gray-100 bg-gray-50 text-gray-400 transition-all duration-500 hover:bg-[#164265] hover:text-white hover:border-[#164265] hover:shadow-lg cursor-default relative z-20">
+            <div className="flex h-7 w-7 xl:h-8 xl:w-8 shrink-0 items-center justify-center rounded-full bg-gray-50 group-hover/mail:bg-transparent">
+              <Mail size={13} />
+            </div>
+            <div className="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/mail:max-w-[280px] group-hover/mail:opacity-100 group-hover/mail:pr-4 text-[10px] xl:text-[11px] font-medium tracking-wide">
+              {faculty.email}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -271,7 +269,7 @@ export default function Faculty() {
   return (
     <section
       id="faculty"
-      className="py-16 bg-linear-to-b from-gray-50 to-white"
+      className="py-10 bg-linear-to-b from-gray-50 to-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-14 relative w-full">

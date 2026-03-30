@@ -31,7 +31,7 @@ export default function Placement() {
   ];
 
   return (
-    <section id="placement" className="py-20 bg-white overflow-hidden relative">
+    <section id="placement" className="py-10 bg-white overflow-hidden relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
         <div className="text-center mb-12">
           <div className="mb-9 relative w-full">

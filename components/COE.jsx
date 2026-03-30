@@ -77,7 +77,7 @@ export default function COE() {
     <section id="coe" className="coe-section">
       <style>{`
         .coe-section {
-          padding: 5rem 0;
+          padding: 3rem 0;
           background: #fafbfc;
           position: relative;
           overflow: hidden;
@@ -314,7 +314,7 @@ export default function COE() {
         }
         @media (max-width: 640px) {
           .coe-section {
-            padding: 3rem 0;
+            padding: 2rem 0;
           }
           .coe-card-image {
             height: 180px;

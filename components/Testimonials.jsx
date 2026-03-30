@@ -243,7 +243,7 @@ export default function Testimonials() {
   const activeDot = current % TESTIMONIALS.length;
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
+    <section id="testimonials" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-14">

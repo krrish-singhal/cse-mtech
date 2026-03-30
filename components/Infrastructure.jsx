@@ -36,7 +36,7 @@ export default function Infrastructure() {
   ];
 
   return (
-    <section id="infrastructure" className="py-20 bg-linear-to-b from-gray-50 to-white">
+    <section id="infrastructure" className="py-10 bg-linear-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 relative w-full">

@@ -31,7 +31,7 @@ export default function Highlights() {
   ];
 
   return (
-    <section id="highlights" className="py-20 bg-[#fafbfc]">
+    <section id="highlights" className="py-10 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Program Highlights Section */}
         <div className="mb-20">

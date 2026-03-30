@@ -63,7 +63,7 @@ export default function Publications() {
   ];
 
   return (
-    <section id="publications" className="py-20 bg-[#fafbfc]">
+    <section id="publications" className="py-10 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 relative w-full">
