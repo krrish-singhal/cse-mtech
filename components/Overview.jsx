@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Users, Award, TrendingUp, Briefcase, GraduationCap, Rocket } from 'lucide-react';
+import { BookOpen, Users, Award, TrendingUp, Briefcase, GraduationCap, Rocket, X } from 'lucide-react';
 import PathwaysModal from './PathwaysModal';
 import { pathwaysData } from '../src/pathwaysData';
 
@@ -7,6 +7,7 @@ export default function Overview() {
   const [imageHovered, setImageHovered] = useState(false);
   const [selectedPathway, setSelectedPathway] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedActionCard, setSelectedActionCard] = useState(null);
 
   const buttons = [
     {
@@ -53,6 +54,18 @@ export default function Overview() {
   const closeModal = () => {
     setIsModalOpen(false);
     setTimeout(() => setSelectedPathway(null), 300);
+  };
+
+  const handleActionCardClick = (id) => {
+    if (id === 'apply') return;
+    if (id === 'curriculum') {
+      const pathwaysSection = document.getElementById('pathways-section');
+      if (pathwaysSection) {
+        pathwaysSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      setSelectedActionCard(id);
+    }
   };
 
   return (
@@ -170,7 +183,7 @@ export default function Overview() {
             const Wrapper = isApplyButton ? 'a' : 'div';
             const wrapperProps = isApplyButton 
               ? { href: 'https://admission.kiet.edu/', target: '_blank', rel: 'noopener noreferrer' } 
-              : {};
+              : { onClick: () => handleActionCardClick(button.id) };
 
             return (
               <Wrapper
@@ -222,7 +235,7 @@ export default function Overview() {
         </div>
 
         {/* THREE DISTINCT PATHWAYS SECTION */}
-        <div className="mt-20">
+        <div id="pathways-section" className="mt-20">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-3 text-gray-900">
               Three Distinct Pathways. One Unified Excellence.
@@ -320,6 +333,130 @@ export default function Overview() {
         onClose={closeModal}
         pathway={selectedPathway}
       />
+
+      {/* Action Card Modal */}
+      {selectedActionCard && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div 
+            className="absolute inset-0 bg-[#0f172a]/70 backdrop-blur-sm transition-opacity" 
+            onClick={() => setSelectedActionCard(null)}
+          ></div>
+          
+          <div className="bg-white rounded-2xl shadow-2xl z-20 w-full max-w-4xl overflow-hidden relative flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="px-6 py-5 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-30">
+              <h3 className="text-2xl font-bold text-[#164265]">
+                <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+                  {buttons.find(b => b.id === selectedActionCard)?.label}
+                </span>
+              </h3>
+              <button 
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-900 transition-colors" 
+                onClick={() => setSelectedActionCard(null)}
+              >
+                <X size={20} strokeWidth={2.5} />
+              </button>
+            </div>
+            
+            {/* Modal Body */}
+            <div className="p-6 md:p-8 overflow-y-auto">
+              {selectedActionCard === 'eligibility' && (
+                <div className="space-y-6">
+                  <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="bg-[#f8fafc] border-b border-gray-200">
+                          <th className="py-4 px-6 font-semibold text-[#164265] w-1/3">Criteria</th>
+                          <th className="py-4 px-6 font-semibold text-[#164265]">Requirement</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        <tr className="hover:bg-gray-50/50 transition-colors">
+                          <td className="py-4 px-6 font-medium text-gray-900">Qualification</td>
+                          <td className="py-4 px-6 text-gray-600">B.E./B.Tech (CSE / IT / Allied) or MCA</td>
+                        </tr>
+                        <tr className="hover:bg-gray-50/50 transition-colors">
+                          <td className="py-4 px-6 font-medium text-gray-900">Minimum Academic Requirement</td>
+                          <td className="py-4 px-6 text-gray-600">6.5 CGPA</td>
+                        </tr>
+                        <tr className="hover:bg-gray-50/50 transition-colors">
+                          <td className="py-4 px-6 font-medium text-gray-900">Preference</td>
+                          <td className="py-4 px-6 text-gray-600">GATE qualified candidates preferred</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {selectedActionCard === 'scholarship' && (
+                <div className="space-y-6 md:space-y-8">
+                  {/* Top Info Box */}
+                  <div className="bg-[#FFF8F5] border border-[#F26520]/20 rounded-xl p-5 md:p-6 shadow-sm">
+                    <h4 className="text-lg md:text-xl font-bold text-gray-900 mb-3 flex flex-wrap items-center">
+                      <span className="mr-2">Total Annual Tuition Fee:</span> 
+                      <span className="text-[#F26520]">₹1,70,000 / Year</span>
+                    </h4>
+                    <ul className="space-y-2 text-gray-700 font-medium ml-1">
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#164265] mr-3"></span>
+                        Exam Fee: ₹10,000 / Year
+                      </li>
+                      <li className="flex items-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#164265] mr-3"></span>
+                        <span>Caution Money: ₹5,000 <span className="text-gray-500 italic font-normal">(Refundable)</span></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Scholarship Table */}
+                  <div>
+                    <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                      <table className="w-full text-left border-collapse text-sm md:text-base whitespace-nowrap md:whitespace-normal">
+                        <thead>
+                          <tr className="bg-[#f8fafc] border-b border-gray-200">
+                            <th className="py-4 px-4 md:px-6 font-semibold text-[#164265]">Scholarship %</th>
+                            <th className="py-4 px-4 md:px-6 font-semibold text-[#164265]">Eligibility (CGPA)</th>
+                            <th className="py-4 px-4 md:px-6 font-semibold text-[#164265]">Tuition Fee Relaxation</th>
+                            <th className="py-4 px-4 md:px-6 font-semibold text-[#164265]">Remarks</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100">
+                          <tr className="hover:bg-gray-50/50 transition-colors">
+                            <td className="py-4 px-4 md:px-6 font-bold text-[#164265]">40%</td>
+                            <td className="py-4 px-4 md:px-6 font-medium text-gray-900">8.0 & above</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600 font-medium">₹68,000</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600">Highest merit scholarship</td>
+                          </tr>
+                          <tr className="hover:bg-gray-50/50 transition-colors">
+                            <td className="py-4 px-4 md:px-6 font-bold text-[#164265]">30%</td>
+                            <td className="py-4 px-4 md:px-6 font-medium text-gray-900">7.5 – &lt; 8.0</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600 font-medium">₹51,000</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600">Merit-based</td>
+                          </tr>
+                          <tr className="hover:bg-gray-50/50 transition-colors">
+                            <td className="py-4 px-4 md:px-6 font-bold text-[#164265]">20%</td>
+                            <td className="py-4 px-4 md:px-6 font-medium text-gray-900">7.0 – &lt; 7.5</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600 font-medium">₹34,000</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600">Merit-based</td>
+                          </tr>
+                          <tr className="bg-[#FFF8F5] border-t-2 border-[#F26520]/20 hover:bg-[#fff2ec] transition-colors">
+                            <td className="py-4 px-4 md:px-6 font-extrabold text-[#F26520]">+5%</td>
+                            <td className="py-4 px-4 md:px-6 font-medium text-gray-900">KIET Alumni</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600 font-medium">Additional Relaxation</td>
+                            <td className="py-4 px-4 md:px-6 text-gray-600">Extra benefit for alumni</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
