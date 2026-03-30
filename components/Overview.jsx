@@ -130,7 +130,7 @@ export default function Overview() {
 
           {/* Dean's Image */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end mt-12 lg:mt-0 xl:pr-4">
-            <div className="relative w-full max-w-[400px] group">
+            <div className="relative w-full max-w-[360px] group mx-auto lg:mx-0">
               <div 
                 className="rounded-2xl overflow-hidden shadow-xl transition-all duration-500 relative border border-gray-100 z-10 bg-[#F8FAFC]"
                 onMouseEnter={() => setImageHovered(true)}
@@ -138,7 +138,7 @@ export default function Overview() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-200/60 via-transparent to-transparent pointer-events-none"></div>
 
-                <div className="relative pt-10 flex justify-center items-end" style={{ height: '480px' }}> 
+                <div className="relative pt-9 flex justify-center items-end" style={{ height: '430px' }}> 
                   <img
                     src="../src/assets/images/Dr._Vineet_Sharma_4478-removebg-preview.png"
                     alt="Dr. Vineet Kumar Sharma - Dean, CSE"

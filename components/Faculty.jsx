@@ -41,6 +41,7 @@ const facultyMembers = [
     name: "Dr. Vineet Kumar Sharma",
     designation: "Senior Professor & Dean",
   },
+  { id: 9, name: "Dr. Madhu Gautam", designation: "Associate Professor & Program Head of M.Tech" },
   { id: 2, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
   {
     id: 3,
@@ -56,7 +57,6 @@ const facultyMembers = [
     name: "Dr. Pranay Madhukar Meshram",
     designation: "Associate Professor",
   },
-  { id: 9, name: "Dr. Madhu Gautam", designation: "Associate Professor" },
   {
     id: 10,
     name: "Dr. Preeti Garg",
@@ -227,7 +227,7 @@ export default function Faculty() {
   const FacultyCard = ({ faculty }) => (
     <div className="group flex-none w-[220px] sm:w-[240px] md:w-[220px] lg:w-[176px] xl:w-[227px] rounded-xl border border-gray-100 bg-white shadow-[0_2px_15px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-gray-300 hover:shadow-xl flex flex-col relative z-0 hover:z-20">
       {/* Top photo area - edge to edge */}
-      <div className="w-full aspect-[4/5] bg-[#ebebeb] flex items-end justify-center relative overflow-hidden rounded-t-xl">
+      <div className="w-full aspect-[1/0.95] bg-[#ebebeb] flex items-end justify-center relative overflow-hidden rounded-t-xl">
         {faculty.imageSrc ? (
           <img
             src={faculty.imageSrc}

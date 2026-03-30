@@ -1,4 +1,5 @@
 import React from 'react';
+import { Award, Medal, Clock, GraduationCap, Wallet, Lightbulb, Rocket, Briefcase, Star } from 'lucide-react';
 
 export default function Highlights() {
   const highlights = [
@@ -19,15 +20,15 @@ export default function Highlights() {
   ];
 
   const programHighlights = [
-    '15+ Years of Academic Excellence in postgraduate computing education',
-    'A Legacy of University Medalist.',
-    'Full-time programme with flexible schedule and extended laboratory access',
-    'GATE scholarships (GoI norms)',
-    'Fee reimbursement for eligible SC/ST & EWS students',
-    'Financial & mentorship support for Research publications',
-    'Startup grants up to ₹10 Lakhs via KIET Technology Business Incubator',
-    '100% placement support',
-    'Merit-Based Scholarships',
+    { text: '15+ Years of Academic Excellence in postgraduate computing education', icon: Award },
+    { text: 'A Legacy of University Medalist.', icon: Medal },
+    { text: 'Full-time programme with flexible schedule and extended laboratory access', icon: Clock },
+    { text: 'GATE scholarships (GoI norms)', icon: GraduationCap },
+    { text: 'Fee reimbursement for eligible SC/ST & EWS students', icon: Wallet },
+    { text: 'Financial & mentorship support for Research publications', icon: Lightbulb },
+    { text: 'Startup grants up to ₹10 Lakhs via KIET Technology Business Incubator', icon: Rocket },
+    { text: '100% placement support', icon: Briefcase },
+    { text: 'Merit-Based Scholarships', icon: Star },
   ];
 
   return (
@@ -41,15 +42,27 @@ export default function Highlights() {
             </span>
             {' '}Highlights
           </h2>
-          <div className="bg-white rounded-[20px] p-6 lg:p-8 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 max-w-3xl mx-auto hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300">
-            <ul className="space-y-3">
-              {programHighlights.map((point, index) => (
-                <li key={index} className="flex items-start gap-3 text-[#475569] text-[14px] md:text-[15px] leading-relaxed">
-                  <span className="text-[#0f172a] text-[8px] mt-[6px]">■</span>
-                  <span className="flex-1">{point}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {programHighlights.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="group relative overflow-hidden bg-white rounded-[20px] p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300 hover:-translate-y-1">
+                  {/* Subtle accent line on hover */}
+                  <div className="absolute top-0 left-0 w-full h-[3px] bg-[#F26520] transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 rounded-t-[20px]"></div>
+                  
+                  <div className="flex gap-4 items-start">
+                    <div className="w-12 h-12 rounded-2xl bg-[#164265]/5 flex items-center justify-center shrink-0 group-hover:bg-[#164265] transition-colors duration-500">
+                      <Icon size={24} className="text-[#164265] group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                    </div>
+                    <div className="flex-1 mt-1">
+                      <p className="text-[#0f172a] font-semibold text-[15px] leading-relaxed group-hover:text-[#F26520] transition-colors duration-300">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 

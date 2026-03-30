@@ -7,10 +7,10 @@ export default function COE() {
   const centres = [
     {
       id: 'ios-lab',
-      title: 'iOS Development Lab',
+      title: 'Apple certified ios development Lab',
       image: '/images/ios-lab.png',
       description:
-        'The iOS Development Lab is a state-of-the-art innovation space dedicated to building world-class applications for the Apple ecosystem. Equipped with modern Mac systems, the lab enables students to master Swift, UIKit/SwiftUI, and end-to-end app development.',
+        'The Apple certified ios development Lab is a state-of-the-art innovation space dedicated to building world-class applications for the Apple ecosystem. Equipped with modern Mac systems, the lab enables students to master Swift, UIKit/SwiftUI, and end-to-end app development.',
       detail:
         'Students work on real-world app projects, gaining hands-on experience in performance optimization, API integration, and App Store readiness.',
       accentColor: '#164265',
