@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
+import nehaImg from "../src/assets/Testimonials/Neha.jpeg";
+import sakshiImg from "../src/assets/Testimonials/Sakshi.jpeg";
+import manikImg from "../src/assets/Testimonials/Manik.png";
 
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Aman Kumar",
+    name: "Neha",
     company: "Google",
     role: "ML Engineer",
     initials: "AK",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: nehaImg,
     avatarBg: "#164265",
     message:
       "The M.Tech program at KIET provided me with comprehensive knowledge in AI and ML. The hands-on projects and industry mentorship were invaluable in my career growth.",
@@ -16,11 +19,11 @@ const TESTIMONIALS = [
   },
   {
     id: 2,
-    name: "Priya Singh",
+    name: "Sakshi",
     company: "Microsoft",
     role: "Data Scientist",
     initials: "PS",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: sakshiImg,
     avatarBg: "#1a5c8a",
     message:
       "KIET's DGX supercomputing center gave me access to cutting-edge technology. The faculty guidance and peer learning environment accelerated my professional development significantly.",
@@ -28,11 +31,11 @@ const TESTIMONIALS = [
   },
   {
     id: 3,
-    name: "Rohit Patel",
+    name: "Manik Sharma",
     company: "Amazon",
     role: "AI Research Scientist",
     initials: "RP",
-    image: "https://randomuser.me/api/portraits/men/57.jpg",
+    image: manikImg,
     avatarBg: "#0f3d5c",
     message:
       "The curriculum is perfectly aligned with industry needs. I appreciated the balance of theoretical knowledge and hands-on applications. The placement support was exceptional.",

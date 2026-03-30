@@ -66,15 +66,16 @@ export default function ProgramDetails() {
   ];
 
   return (
-    <section id="details" className="py-24 bg-gray-50/50">
+    <section id="details" className="pb-10 bg-gray-50/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#164265] mb-4 tracking-tight">
-            Program Details
+        <div className="mb-14 relative w-full">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
+            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+              Program Details
+            </span>
           </h2>
-          <div className="w-24 h-1.5 rounded-full mx-auto" style={{ backgroundColor: '#F26520' }}></div>
         </div>
 
         {/* Vision & Mission Split Section */}

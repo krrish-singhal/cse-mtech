@@ -2,23 +2,15 @@ import React from 'react';
 
 export default function Highlights() {
   const highlights = [
-    
     {
       id: 1,
-      title: 'PARAM Shavak – High Performance Computing Lab',
-      description:
-        'The PARAM Shavak supercomputer, developed by C-DAC, empowers students with hands-on experience in high-performance computing and parallel processing. It supports complex simulations, big data analysis, and scientific computing—bridging the gap between academic learning and real-world computational challenges.',
-      image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?fit=crop&w=400&h=400&q=80',
-    },
-    {
-      id: 2,
       title: 'Strong Industry Connect & Collaboration',
       description:
         'The department maintains a robust industry ecosystem, connecting students with leading tech companies, startups, and R&D organizations. Through internships, live projects, expert talks, and mentorship, students gain real-world exposure, making them industry-ready and highly employable from day one.',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=400&h=400&q=80',
     },
     {
-      id: 3,
+      id: 2,
       title: 'Curriculum Highlights',
       description:
         'The M.Tech (CSE) curriculum is designed to deliver a perfect blend of strong fundamentals, emerging technologies, and real-world application. Students build expertise in core areas like Data Structures, DBMS, and Software Engineering, while advancing into AI, Machine Learning, Blockchain, and Quantum Computing.',
@@ -26,10 +18,41 @@ export default function Highlights() {
     },
   ];
 
+  const programHighlights = [
+    '15+ Years of Academic Excellence in postgraduate computing education',
+    'A Legacy of University Medalist.',
+    'Full-time programme with flexible schedule and extended laboratory access',
+    'GATE scholarships (GoI norms)',
+    'Fee reimbursement for eligible SC/ST & EWS students',
+    'Financial & mentorship support for Research publications',
+    'Startup grants up to ₹10 Lakhs via KIET Technology Business Incubator',
+    '100% placement support',
+    'Merit-Based Scholarships',
+  ];
 
   return (
     <section id="highlights" className="py-20 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Program Highlights Section */}
+        <div className="mb-20">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-8 tracking-tight text-center">
+            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+              Program
+            </span>
+            {' '}Highlights
+          </h2>
+          <div className="bg-white rounded-[20px] p-6 lg:p-8 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 max-w-3xl mx-auto hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300">
+            <ul className="space-y-3">
+              {programHighlights.map((point, index) => (
+                <li key={index} className="flex items-start gap-3 text-[#475569] text-[14px] md:text-[15px] leading-relaxed">
+                  <span className="text-[#0f172a] text-[8px] mt-[6px]">■</span>
+                  <span className="flex-1">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="mb-14 relative w-full">
           <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">

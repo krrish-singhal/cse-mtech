@@ -85,7 +85,7 @@ export default function PathwaysModal({ open, onClose, pathway }) {
                         className="flex items-start gap-3 text-gray-800"
                       >
                         <span 
-                          className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full"
+                          className="mt-1.5 shrink-0 w-2 h-2 rounded-full"
                           style={{ backgroundColor: pathway.color }}
                         ></span>
                         <span className="text-sm leading-relaxed">
