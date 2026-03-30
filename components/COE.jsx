@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Code2, Layers, Rocket, Database, Zap, Server } from 'lucide-react';
+import { ArrowRight, Code2, Layers, Rocket, Database, Zap, Server, Network } from 'lucide-react';
 
 export default function COE() {
   const [activeCard, setActiveCard] = useState(null);
@@ -49,6 +49,28 @@ export default function COE() {
         { value: '8x', label: 'A100 GPUs' },
       ],
     },
+    {
+      id: 'param-shavak',
+      title: 'PARAM Shavak HPC Lab',
+      image: '/images/param-shavak.png',
+      description:
+        'The PARAM Shavak supercomputer, developed by C-DAC, empowers students with hands-on experience in high-performance computing and parallel processing.',
+      detail:
+        'It supports complex simulations, big data analysis, and scientific computing—bridging the gap between academic learning and real-world computational challenges.',
+      accentColor: '#164265',
+      gradientFrom: '#164265',
+      gradientTo: '#1e6fa0',
+      tags: [
+        { label: 'High Performance', icon: Server },
+        { label: 'Parallel Processing', icon: Network },
+        { label: 'Big Data', icon: Database },
+      ],
+      stats: [
+        { value: 'C-DAC', label: 'Developed By' },
+        { value: 'Scientific', label: 'Computing' },
+        { value: 'Complex', label: 'Simulations' },
+      ],
+    },
   ];
 
   return (
@@ -56,7 +78,7 @@ export default function COE() {
       <style>{`
         .coe-section {
           padding: 5rem 0;
-          background: linear-gradient(180deg, #f0f4f8 0%, #e8edf3 100%);
+          background: #fafbfc;
           position: relative;
           overflow: hidden;
         }
@@ -93,11 +115,20 @@ export default function COE() {
           line-height: 1.65;
         }
 
-        /* Side by side grid */
+        /* Grid layout */
         .coe-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
+        }
+
+        /* Center the 3rd card on large screens */
+        @media (min-width: 901px) {
+          .coe-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: calc(50% - 1rem);
+          }
         }
 
         /* Card */
@@ -274,6 +305,9 @@ export default function COE() {
             grid-template-columns: 1fr;
             max-width: 550px;
             margin: 0 auto;
+          }
+          .coe-card:last-child:nth-child(odd) {
+            width: 100%;
           }
         }
         @media (max-width: 640px) {
