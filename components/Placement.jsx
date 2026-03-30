@@ -34,11 +34,14 @@ export default function Placement() {
     <section id="placement" className="py-20 bg-gray-50 overflow-hidden relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#164265] mb-4 font-secondary tracking-tight">
-            Placement Statistics
+          <div className="mb-9 relative w-full">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
+            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
+              Placement Statistics
+            </span>
           </h2>
-          <div className="w-24 h-1 bg-[#F26520] mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+        </div>
+          <p className=" text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
             The postgraduates of the CSE Department consistently secure top-tier placements across industry-leading organizations, reflecting our commitment to academic excellence and industry relevance.
           </p>
         </div>

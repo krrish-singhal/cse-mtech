@@ -112,7 +112,7 @@ export default function Publications() {
               <div
                 key={research.id}
                 onClick={() => setActiveResearch(research)}
-                className="flex items-start space-x-4 p-5 rounded-[12px] bg-[#fafbfc] transition-all duration-300 hover:bg-white hover:shadow-md cursor-pointer border border-transparent hover:border-gray-100"
+                className="flex items-start space-x-4 p-5 rounded-[12px] bg-[#fafbfc] transition-all duration-300 hover:bg-white hover:shadow-md cursor-pointer border border-transparent hover:border-[#F26520]"
               >
                 <FileText className="text-[#164265] shrink-0 mt-0.5" fill="#dbeafe" size={28} />
                 <div>

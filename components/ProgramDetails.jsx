@@ -83,39 +83,34 @@ export default function ProgramDetails() {
 
           {/* Where We Aim (Vision) */}
           <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
-            <div className="absolute -right-8 -bottom-8 opacity-[0.03] text-[#F26520] transform group-hover:scale-110 transition-transform duration-700">
-              <Target size={200} />
-            </div>
-
             <div className="flex items-center space-x-4 mb-8">
-              <div className="w-14 h-14 rounded-xl bg-[#F26520]/10 flex items-center justify-center text-[#F26520]">
-                <Target size={32} strokeWidth={2.5} />
-              </div>
-              <h3 className="text-3xl font-bold text-[#164265]">Where We Aim</h3>
+              <h3 className="text-3xl font-bold text-[#164265]">Vision</h3>
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed font-medium relative z-10">
-              To be a center of excellence in Computer Science and Engineering, fostering innovation, advanced research, and industry-ready professionals who contribute to technological advancement and societal development at a global level.
-            </p>
+            <ul className="space-y-4 text-gray-700 relative z-10">
+              {[
+                'To achieve pre-eminence in providing skill-enabled technical education in the domain of Computer Science Engineering, the focus is on creating a strong academic environment that blends theoretical knowledge with practical expertise.',
+                'This involves designing a curriculum that is industry-relevant, continuously updated, and aligned with emerging technologies such as artificial intelligence, data science, cybersecurity, and cloud computing.',
+                'By incorporating hands-on projects, internships, and real-world problem-solving approaches, students are equipped not only with technical proficiency but also with critical thinking and innovation skills.'
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start">
+                  <span className="w-2 h-2 rounded-full bg-[#F26520] mt-2 mr-3 flex-shrink-0"></span>
+                  <span className="text-base leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* How We Work (Mission) */}
           <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
-            <div className="absolute -right-10 -bottom-10 opacity-[0.03] text-[#164265] transform group-hover:-rotate-12 transition-transform duration-700">
-              <Compass size={220} />
-            </div>
-
             <div className="flex items-center space-x-4 mb-8">
-              <div className="w-14 h-14 rounded-xl bg-[#164265]/10 flex items-center justify-center text-[#164265]">
-                <Compass size={32} strokeWidth={2.5} />
-              </div>
-              <h3 className="text-3xl font-bold text-[#164265]">How We Work</h3>
+              <h3 className="text-3xl font-bold text-[#164265]">Mission</h3>
             </div>
             <ul className="space-y-4 text-gray-700 relative z-10">
               {[
-                'To deliver high-quality education through a strong foundation in computing, emerging technologies, and interdisciplinary learning.',
-                'To promote research, innovation, and critical thinking through advanced labs and industry collaboration.',
-                'To develop industry-ready professionals with practical skills, ethical values, and problem-solving abilities.',
-                'To encourage lifelong learning and leadership, preparing students for global challenges in technology and society.'
+                'To provide students with necessary skills and knowledge to meet current and future requirements using innovative teaching and learning approaches.',
+                'To impart skill-based computer science and engineering education by adopting contemporary tools and technologies.',
+                'To develop industry-academia alliance for practicing industry-oriented projects and internships to open new opportunities in industry, research, and entrepreneurship.',
+                'To keep the intellectual capital of the department motivated for learning about technological changes by providing them with a conductive environment.'
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start">
                   <span className="w-2 h-2 rounded-full bg-[#F26520] mt-2 mr-3 flex-shrink-0"></span>
@@ -131,7 +126,7 @@ export default function ProgramDetails() {
         <div>
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-extrabold text-[#164265] mb-4">
-              What You Gain
+              Program Outcomes
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               10 crucial program outcomes designed to transform you into a global technology leader.
