@@ -96,7 +96,7 @@ export default function Overview() {
                 Dear Aspirants,
               </h3>
               
-              <div className="space-y-4 text-gray-700 leading-relaxed text-left relative z-10">
+              <div className="space-y-4 text-gray-700 leading-relaxed text-justify relative z-10">
                 <p className="text-lg font-medium italic mb-6" style={{ color: '#374151' }}>
                   "It is my privilege to welcome you to the Department of Computer Science & 
                   Engineering, accredited by NBA until June 2027. The department offers 
@@ -189,8 +189,8 @@ export default function Overview() {
               <Wrapper
                 key={button.id}
                 {...wrapperProps}
-                className={`group relative overflow-hidden rounded-xl p-5 transition-all duration-300 border cursor-pointer flex flex-col h-full bg-white border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 no-underline ${
-                  isApplyButton ? 'hover:border-[#F26520]/50' : 'hover:border-[#164265]/30'
+                className={`group relative overflow-hidden rounded-xl p-5 transition-all duration-300 border cursor-pointer flex flex-col h-full shadow-sm hover:shadow-lg hover:-translate-y-1 no-underline ${
+                  isApplyButton ? 'bg-[#164265] border-[#164265]' : 'bg-white border-gray-200 hover:border-[#164265]/30'
                 }`}
               >
                 <div className={`absolute top-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ${
@@ -202,7 +202,7 @@ export default function Overview() {
                     <div
                       className={`rounded-lg p-2.5 w-fit transition-colors duration-300 ${
                         isApplyButton 
-                          ? 'bg-[#F26520]/10 text-[#F26520] group-hover:bg-[#F26520] group-hover:text-white' 
+                          ? 'bg-white/10 text-[#F26520] group-hover:bg-[#F26520] group-hover:text-white' 
                           : 'bg-[#164265]/10 text-[#164265] group-hover:bg-[#164265] group-hover:text-white'
                       }`}
                     >
@@ -210,17 +210,17 @@ export default function Overview() {
                     </div>
                   </div>
 
-                  <h4 className="font-bold text-base mb-1.5 text-[#164265]">
+                  <h4 className={`font-bold text-base mb-1.5 ${isApplyButton ? 'text-white' : 'text-[#164265]'}`}>
                     {button.label}
                   </h4>
                   
-                  <p className="text-sm flex-grow mb-5 leading-relaxed text-gray-600">
+                  <p className={`text-sm flex-grow mb-5 leading-relaxed ${isApplyButton ? 'text-blue-100/80' : 'text-gray-600'}`}>
                     {button.description}
                   </p>
 
                   <div
                     className={`mt-auto flex items-center space-x-1.5 font-semibold text-xs uppercase tracking-wide ${
-                      isApplyButton ? 'text-[#F26520]' : 'text-[#164265]'
+                      isApplyButton ? 'text-[#F26520] group-hover:text-white transition-colors duration-300' : 'text-[#164265]'
                     }`}
                   >
                     <span>{isApplyButton ? 'Apply Now' : 'Learn more'}</span>

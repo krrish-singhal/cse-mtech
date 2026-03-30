@@ -31,7 +31,7 @@ export default function Placement() {
   ];
 
   return (
-    <section id="placement" className="py-20 bg-gray-50 overflow-hidden relative">
+    <section id="placement" className="py-20 bg-white overflow-hidden relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#164265] mb-4 font-secondary tracking-tight">
@@ -95,8 +95,8 @@ export default function Placement() {
           </h2>
           <div className="w-16 h-1 bg-[#F26520] mx-auto rounded-full"></div>
         </div>
-        <div className="w-full overflow-hidden bg-white py-8 border-y border-gray-200 shadow-sm">
-          <div className="flex animate-marquee hover:[animation-play-state:paused] cursor-pointer">
+        <div className="w-full overflow-hidden py-4 md:py-8">
+          <div className="flex animate-marquee hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((logo, i) => (
               <div
                 key={i}
@@ -105,7 +105,7 @@ export default function Placement() {
                 <img
                   src={logo}
                   alt="logo"
-                  className="h-12 md:h-16 object-contain hover:scale-110 transition duration-300 filter grayscale hover:grayscale-0"
+                  className="h-12 md:h-16 object-contain"
                 />
               </div>
             ))}
