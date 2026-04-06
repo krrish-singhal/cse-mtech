@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import nehaImg from "../src/assets/Testimonials/Neha.jpeg";
 import sakshiImg from "../src/assets/Testimonials/Sakshi.jpeg";
 import manikImg from "../src/assets/Testimonials/Manik.png";
+import abhishekImg from "../src/assets/Testimonials/Abhishek.png";
 
 const TESTIMONIALS = [
   {
@@ -39,6 +40,18 @@ const TESTIMONIALS = [
     avatarBg: "#0f3d5c",
     message:
       "The curriculum is perfectly aligned with industry needs. I appreciated the balance of theoretical knowledge and hands-on applications. The placement support was exceptional.",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Abhishek",
+    company: "KIET Group of Institutions",
+    role: "Assistant Professor",
+    initials: "RP",
+    image: abhishekImg,
+    avatarBg: "#0f3d5c",
+    message:
+      "The research opportunities and collaboration with industry experts during the M.Tech program gave me a significant advantage. The faculty are genuinely committed educators.",
     rating: 5,
   },
 ];
@@ -133,6 +146,7 @@ function TestimonialCard({ testimonial }) {
             WebkitLineClamp: 5,
             WebkitBoxOrient: "vertical",
             margin: 0,
+            textAlign: "justify",
           }}
         >
           &ldquo;{testimonial.message}&rdquo;

@@ -94,7 +94,7 @@ export default function ProgramDetails() {
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start">
                   <span className="w-2 h-2 rounded-full bg-[#F26520] mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-base leading-snug">{item}</span>
+                  <span className="text-base leading-snug text-justify">{item}</span>
                 </li>
               ))}
             </ul>
@@ -114,7 +114,7 @@ export default function ProgramDetails() {
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start">
                   <span className="w-2 h-2 rounded-full bg-[#F26520] mt-2 mr-3 flex-shrink-0"></span>
-                  <span className="text-base leading-snug">{item}</span>
+                  <span className="text-base leading-snug text-justify">{item}</span>
                 </li>
               ))}
             </ul>
@@ -151,7 +151,7 @@ export default function ProgramDetails() {
                     </span>
                   </div>
                   <h4 className="text-lg font-bold text-[#164265] mb-3 leading-tight">{gain.title}</h4>
-                  <p className="text-sm text-gray-600 leading-relaxed flex-grow">{gain.desc}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed flex-grow text-justify">{gain.desc}</p>
                 </div>
               );
             })}

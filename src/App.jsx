@@ -25,7 +25,7 @@ export default function App() {
         <Faculty />
         <Publications />
         <ProgramDetails />
-        {/* <Infrastructure /> */}
+        <Infrastructure />
         <Placement />
         <Testimonials />
       </main>
