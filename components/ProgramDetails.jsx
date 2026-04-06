@@ -66,7 +66,7 @@ export default function ProgramDetails() {
   ];
 
   return (
-    <section id="details" className="pt-0 pb-10 bg-[#fafbfc]">
+    <section id="details" className="pt-7 pb-10 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
