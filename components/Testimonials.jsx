@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
-import nehaImg from "../src/assets/Testimonials/Neha.jpeg";
-import sakshiImg from "../src/assets/Testimonials/Sakshi.jpeg";
-import manikImg from "../src/assets/Testimonials/Manik.png";
+import nehaImg from "../src/assets/Testimonials/Neha.webp";
+import sakshiImg from "../src/assets/Testimonials/Sakshi.webp";
+import manikImg from "../src/assets/Testimonials/Manik.webp";
 
 const TESTIMONIALS = [
   {
