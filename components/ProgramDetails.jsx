@@ -66,7 +66,7 @@ export default function ProgramDetails() {
   ];
 
   return (
-    <section id="details" className="py-10 bg-gray-50/50">
+    <section id="details" className="pt-0 pb-10 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -79,7 +79,7 @@ export default function ProgramDetails() {
         </div>
 
         {/* Vision & Mission Split Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
 
           {/* Where We Aim (Vision) */}
           <div className="bg-white rounded-2xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 flex flex-col h-full relative overflow-hidden group hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-shadow duration-500">
@@ -124,7 +124,7 @@ export default function ProgramDetails() {
 
         {/* What You Gain (Program Outcomes) */}
         <div>
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-extrabold text-[#164265] mb-4">
               Program Outcomes
             </h3>

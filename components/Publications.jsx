@@ -63,7 +63,7 @@ export default function Publications() {
   ];
 
   return (
-    <section id="publications" className="py-10 bg-[#fafbfc]">
+    <section id="publications" className="pt-10 pb-4 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 relative w-full">
@@ -129,7 +129,7 @@ export default function Publications() {
         </div>
 
         {/* Annual Research Reports */}
-        <div className="max-w-5xl mx-auto mb-16">
+        <div className="max-w-5xl mx-auto mb-0">
           <div className="flex flex-col gap-4">
             {annualReports.map((report) => (
               <div 
