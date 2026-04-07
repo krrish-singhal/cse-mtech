@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import nehaImg from "../src/assets/Testimonials/Neha.webp";
 import sakshiImg from "../src/assets/Testimonials/Sakshi.webp";
 import manikImg from "../src/assets/Testimonials/Manik.webp";
+import abhishekImg from "../src/assets/Testimonials/Abhishek.webp";
 
 const TESTIMONIALS = [
   {
