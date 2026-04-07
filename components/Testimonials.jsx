@@ -43,38 +43,14 @@ const TESTIMONIALS = [
   },
   {
     id: 4,
-    name: "Neha Verma",
-    company: "IBM",
-    role: "Senior Developer",
-    initials: "NV",
-    image: "https://randomuser.me/api/portraits/women/26.jpg",
-    avatarBg: "#164265",
-    message:
-      "Outstanding program with experienced faculty and world-class infrastructure. The industry connect sessions helped me understand real-world AI challenges and build practical solutions.",
-    rating: 5,
-  },
-  {
-    id: 5,
-    name: "Arjun Mehta",
-    company: "Flipkart",
-    role: "Software Engineer",
-    initials: "AM",
-    image: "https://randomuser.me/api/portraits/men/15.jpg",
-    avatarBg: "#1a5c8a",
-    message:
-      "The research opportunities and collaboration with industry experts during the M.Tech program gave me a significant advantage. The faculty are genuinely committed educators.",
-    rating: 5,
-  },
-  {
-    id: 6,
-    name: "Divya Sharma",
-    company: "TCS Research",
-    role: "AI Researcher",
-    initials: "DS",
-    image: "https://randomuser.me/api/portraits/women/63.jpg",
+    name: "Abhishek",
+    company: "KIET Group of Institutions",
+    role: "Assistant Professor",
+    initials: "RP",
+    image: abhishekImg,
     avatarBg: "#0f3d5c",
     message:
-      "From state-of-the-art labs to experienced mentors, KIET's M.Tech CSE program exceeded my expectations. The exposure to emerging technologies prepared me comprehensively for the AI industry.",
+      "The research opportunities and collaboration with industry experts during the M.Tech program gave me a significant advantage. The faculty are genuinely committed educators.",
     rating: 5,
   },
 ];
@@ -169,6 +145,7 @@ function TestimonialCard({ testimonial }) {
             WebkitLineClamp: 5,
             WebkitBoxOrient: "vertical",
             margin: 0,
+            textAlign: "justify",
           }}
         >
           &ldquo;{testimonial.message}&rdquo;
@@ -243,7 +220,7 @@ export default function Testimonials() {
   const activeDot = current % TESTIMONIALS.length;
 
   return (
-    <section id="testimonials" className="py-10 bg-white">
+    <section id="testimonials" className="pt-3 pb-15 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-14">

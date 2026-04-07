@@ -39,28 +39,28 @@ const facultyMembers = [
   {
     id: 1,
     name: "Dr. Vineet Kumar Sharma",
-    designation: "Senior Professor & Dean",
+    designation: "Senior Professor\nDean CSE",
   },
-  { id: 9, name: "Dr. Madhu Gautam", designation: "Associate Professor & Program Head of M.Tech" },
-  { id: 2, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
+  { id: 2, name: "Dr. Madhu Gautam", designation: "Associate Professor\nProgram Head of M.Tech" },
+  { id: 3, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
   {
-    id: 3,
+    id: 4,
     name: "Dr. Swati Sharma",
-    designation: "Associate Professor & Program Head (2nd to 4th yr)",
+    designation: "Associate Professor",
   },
-  { id: 4, name: "Dr. Parita Jain", designation: "Professor" },
-  { id: 5, name: "Dr. Seema Maitrey", designation: "Associate Professor" },
-  { id: 6, name: "Dr. Ankur Bhardwaj", designation: "Associate Professor" },
-  { id: 7, name: "Dr. Neha Yadav", designation: "Associate Professor" },
+  { id: 5, name: "Dr. Parita Jain", designation: "Professor" },
+  { id: 6, name: "Dr. Seema Maitrey", designation: "Associate Professor" },
+  { id: 7, name: "Dr. Ankur Bhardwaj", designation: "Associate Professor" },
+  { id: 8, name: "Dr. Neha Yadav", designation: "Associate Professor" },
   {
-    id: 8,
+    id: 9,
     name: "Dr. Pranay Madhukar Meshram",
     designation: "Associate Professor",
   },
   {
     id: 10,
     name: "Dr. Preeti Garg",
-    designation: "Associate Professor & Program Head (1st yr)",
+    designation: "Associate Professor",
   },
   { id: 11, name: "Dr. Upendra Mishra", designation: "Associate Professor" },
   { id: 12, name: "Mr. Saurav Chandra", designation: "Assistant Professor" },
@@ -244,7 +244,7 @@ export default function Faculty() {
         <h4 className="text-[14px] sm:text-[15px] xl:text-[16px] font-bold text-[#164265] mb-1 leading-tight w-full truncate">
           {faculty.name}
         </h4>
-        <p className="text-[10px] xl:text-[11px] font-medium text-gray-500 leading-snug px-1 mb-1 whitespace-normal">
+        <p className="text-[10px] xl:text-[11px] font-medium text-gray-500 leading-snug px-1 mb-1 whitespace-pre-line">
           {faculty.designation}
         </p>
         {faculty.degree ? (

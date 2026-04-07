@@ -102,7 +102,7 @@ export default function Placement() {
 
   return (
     <section id="placement" className="py-10 bg-white overflow-hidden relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-15 relative z-10">
         <div className="text-center mb-12">
           <div className="mb-9 relative w-full">
             <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
@@ -221,7 +221,7 @@ export default function Placement() {
         .animate-marquee {
           display: flex;
           width: max-content;
-          animation: marquee 22s linear infinite;
+          animation: marquee 80s linear infinite;
         }
 
         @keyframes marquee {

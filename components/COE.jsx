@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Code2, Layers, Rocket, Database, Zap, Server, Network } from 'lucide-react';
+import paramShavakImg from '../src/assets/coe/ParamShavak.jpg';
+import appleLabImg from '../src/assets/coe/AppleLab.png';
 
 export default function COE() {
   const [activeCard, setActiveCard] = useState(null);
@@ -8,7 +10,7 @@ export default function COE() {
     {
       id: 'ios-lab',
       title: 'Apple certified ios development Lab',
-      image: '/images/ios-lab.png',
+      image: appleLabImg,
       description:
         'The Apple certified ios development Lab is a state-of-the-art innovation space dedicated to building world-class applications for the Apple ecosystem. Equipped with modern Mac systems, the lab enables students to master Swift, UIKit/SwiftUI, and end-to-end app development.',
       detail:
@@ -52,7 +54,7 @@ export default function COE() {
     {
       id: 'param-shavak',
       title: 'PARAM Shavak HPC Lab',
-      image: '/images/param-shavak.png',
+      image: paramShavakImg,
       description:
         'The PARAM Shavak supercomputer, developed by C-DAC, empowers students with hands-on experience in high-performance computing and parallel processing.',
       detail:
@@ -189,14 +191,14 @@ export default function COE() {
         }
         .coe-card-desc {
           color: #4b5563;
-          font-size: 0.855rem;
+          font-size: 14px;
           line-height: 1.65;
           margin-bottom: 0.5rem;
           text-align: justify;
         }
         .coe-card-detail {
           color: #6b7280;
-          font-size: 0.82rem;
+          font-size: 14px;
           line-height: 1.6;
           margin-bottom: 1.15rem;
           text-align: justify;
@@ -206,6 +208,7 @@ export default function COE() {
         .coe-stats {
           display: flex;
           gap: 0.5rem;
+          margin-top: auto;
           margin-bottom: 1.15rem;
           padding: 0.85rem 0;
           border-top: 1px solid #f3f4f6;

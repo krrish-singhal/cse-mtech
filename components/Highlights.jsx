@@ -17,6 +17,34 @@ export default function Highlights() {
         'The M.Tech (CSE) curriculum is designed to deliver a perfect blend of strong fundamentals, emerging technologies, and real-world application. Students build expertise in core areas like Data Structures, DBMS, and Software Engineering, while advancing into AI, Machine Learning, Blockchain, and Quantum Computing.',
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?fit=crop&w=400&h=400&q=80',
     },
+    {
+      id: 3,
+      title: 'Outstanding Placements',
+      description:
+        'Our graduates secure highly competitive roles at top multinational companies and promising startups. With dedicated placement cell support, rigorous interview preparation, and skill enhancement programs, we ensure a smooth transition from academics to successful professional careers.',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 4,
+      title: 'Cutting-Edge Research',
+      description:
+        'Engage in groundbreaking research across specialized domains like AI, Data Science, and Cyber Security. We provide extensive support for publishing in reputed journals, participating in international conferences, and collaborating on government-funded and industry-sponsored projects.',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 5,
+      title: 'State-of-the-art Infrastructure',
+      description:
+        'Experience learning in world-class facilities equipped with high-end computing laboratories, smart classrooms, and collaborative workspaces. Our advanced labs are powered by the latest software and hardware to support intensive computing tasks and complex project developments.',
+      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?fit=crop&w=400&h=400&q=80',
+    },
+    {
+      id: 6,
+      title: 'Best Results & Academic Excellence',
+      description:
+        'Our students consistently top university examinations and secure prestigious awards. This legacy of academic brilliance is driven by experienced faculty, continuous evaluations, and a learning environment that encourages analytical thinking and problem-solving.',
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?fit=crop&w=400&h=400&q=80',
+    },
   ];
 
   const programHighlights = [
@@ -79,14 +107,14 @@ export default function Highlights() {
         </div>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           {highlights.map((highlight) => (
             <div
               key={highlight.id}
-              className="bg-white rounded-[20px] p-6 lg:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300"
+              className="bg-white rounded-[16px] p-5 lg:p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 md:gap-6 shadow-[0px_4px_24px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.06)] transition-all duration-300"
             >
               {/* Image Container */}
-              <div className="shrink-0 w-32 h-32 md:w-[130px] md:h-[130px] overflow-hidden rounded-[16px] shadow-sm">
+              <div className="shrink-0 w-24 h-24 md:w-[110px] md:h-[110px] overflow-hidden rounded-[14px] shadow-sm">
                 <img
                   src={highlight.image}
                   alt={highlight.title}
@@ -95,11 +123,11 @@ export default function Highlights() {
               </div>
 
               {/* Content */}
-              <div className="flex-1 flex flex-col justify-center h-full pt-1 sm:pt-2">
-                <h3 className="text-xl md:text-[22px] font-bold text-[#0f172a] mb-3 leading-snug">
+              <div className="flex-1 flex flex-col justify-start h-full pt-1">
+                <h3 className="text-lg md:text-xl font-bold text-[#0f172a] mb-2 leading-snug">
                   {highlight.title}
                 </h3>
-                <p className="text-[#475569] text-[15px] leading-relaxed whitespace-pre-line">
+                <p className="text-[#475569] text-[14px] md:text-[15px] leading-relaxed whitespace-pre-line text-justify">
                   {highlight.description}
                 </p>
               </div>
@@ -111,7 +139,7 @@ export default function Highlights() {
         
 
         {/* Additional Info */}
-        <div className="mt-28 text-center space-y-6">
+        <div className="mt-16 text-center space-y-6">
           <h3 className="text-[28px] font-bold text-[#0f172a]">
             Why Choose Our Program?
           </h3>

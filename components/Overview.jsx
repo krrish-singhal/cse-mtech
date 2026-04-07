@@ -167,7 +167,7 @@ export default function Overview() {
               >
                 <div className="flex flex-col items-center text-center">
                   <h4 className="font-bold text-xl leading-snug mb-1 text-white">Dr. Vineet Kumar Sharma</h4>
-                  <p className="text-sm text-gray-200 uppercase tracking-widest font-medium">Professor & Dean, CSE</p>
+                  <p className="text-sm text-gray-200 uppercase tracking-widest font-medium">Senior Professor & Dean, CSE</p>
                 </div>
               </div>
             </div>
