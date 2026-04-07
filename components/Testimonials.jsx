@@ -224,14 +224,16 @@ export default function Testimonials() {
     <section id="testimonials" className="pt-3 pb-15 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <div className="mb-14">
+        <div className="mb-14 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-2">
             Student Testimonials
           </h2>
-          <div
-            className="w-24 h-1 rounded-full"
-            style={{ backgroundColor: "#F26520" }}
-          />
+          <div className="flex justify-center">
+            <div
+              className="w-24 h-1 rounded-full"
+              style={{ backgroundColor: "#F26520" }}
+            />
+          </div>
         </div>
 
         {/* Carousel track */}

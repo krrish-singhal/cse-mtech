@@ -46,12 +46,13 @@ export default function Clubs() {
     <section id="clubs" className="py-10 bg-white overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-14 relative w-full">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
-            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
-              Clubs
-            </span>
+        <div className="mb-14 relative w-full text-center">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-2 tracking-tight">
+            Clubs
           </h2>
+          <div className="flex justify-center">
+            <div className="w-24 h-1 rounded-full bg-[#F26520]"></div>
+          </div>
         </div>
         
         {/* Timeline Grid */}
