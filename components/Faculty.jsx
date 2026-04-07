@@ -45,7 +45,7 @@ const facultyMembers = [
   { id: 3, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
   {
     id: 4,
-    name: "Dr. Swati Sharma",
+    name: "Dr. Preeti Garg",
     designation: "Associate Professor",
   },
   { id: 5, name: "Dr. Parita Jain", designation: "Professor" },
@@ -59,7 +59,7 @@ const facultyMembers = [
   },
   {
     id: 10,
-    name: "Dr. Preeti Garg",
+    name: "Dr. Swati Sharma",
     designation: "Associate Professor",
   },
   { id: 11, name: "Dr. Upendra Mishra", designation: "Associate Professor" },
