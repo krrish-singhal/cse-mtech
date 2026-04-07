@@ -104,15 +104,13 @@ export default function Placement() {
     <section id="placement" className="py-10 bg-white overflow-hidden relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-15 relative z-10">
         <div className="text-center mb-12">
-          <div className="mb-9 relative w-full">
-            <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
-              <span
-                className="pb-1"
-                style={{ borderBottom: "3px solid #F26520" }}
-              >
-                Placement Statistics
-              </span>
+          <div className="mb-9 relative w-full text-center">
+            <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-2 tracking-tight">
+              Placement Statistics
             </h2>
+            <div className="flex justify-center">
+              <div className="w-24 h-1 rounded-full bg-[#F26520]"></div>
+            </div>
           </div>
           <p className=" text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
             The postgraduates of the CSE Department consistently secure top-tier

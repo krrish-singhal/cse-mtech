@@ -63,13 +63,13 @@ export default function Highlights() {
     <section id="highlights" className="py-10 bg-[#fafbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Program Highlights Section */}
-        <div className="mb-20">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-8 tracking-tight text-center">
-            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
-              Program
-            </span>
-            {' '}Highlights
+        <div className="mb-20 text-center">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-2 tracking-tight">
+            Program Highlights
           </h2>
+          <div className="flex justify-center mb-8">
+            <div className="w-24 h-1 rounded-full bg-[#F26520]"></div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {programHighlights.map((item, index) => {
               const Icon = item.icon;
@@ -95,15 +95,13 @@ export default function Highlights() {
         </div>
 
         {/* Header */}
-        <div className="mb-14 relative w-full">
-          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-6 tracking-tight text-center">
-            <span className="pb-1" style={{ borderBottom: '3px solid #F26520' }}>
-              Department's
-            </span>
-            {' '}Highlights
+        <div className="mb-14 relative w-full text-center">
+          <h2 className="text-[32px] md:text-[40px] font-bold text-[#0f172a] mb-2 tracking-tight">
+            Department's Highlights
           </h2>
-          
-        
+          <div className="flex justify-center">
+            <div className="w-24 h-1 rounded-full bg-[#F26520]"></div>
+          </div>
         </div>
 
         {/* Highlights Grid */}
