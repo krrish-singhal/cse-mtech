@@ -49,7 +49,7 @@ export default function Highlights() {
 
   const programHighlights = [
     { text: '15+ Years of Academic Excellence in postgraduate computing education', icon: Award },
-    { text: 'A Legacy of University Medalist.', icon: Medal },
+    { text: 'A Legacy of University Medalist', icon: Medal },
     { text: 'Full-time programme with flexible schedule and extended laboratory access', icon: Clock },
     { text: 'GATE scholarships (GoI norms)', icon: GraduationCap },
     { text: 'Fee reimbursement for eligible SC/ST & EWS students', icon: Wallet },
