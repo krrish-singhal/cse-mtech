@@ -32,18 +32,6 @@ const TESTIMONIALS = [
   },
   {
     id: 3,
-    name: "Manik Sharma",
-    company: "Amazon",
-    role: "AI Research Scientist",
-    initials: "RP",
-    image: manikImg,
-    avatarBg: "#0f3d5c",
-    message:
-      "The curriculum is perfectly aligned with industry needs. I appreciated the balance of theoretical knowledge and hands-on applications. The placement support was exceptional.",
-    rating: 5,
-  },
-  {
-    id: 4,
     name: "Abhishek",
     company: "KIET Group of Institutions",
     role: "Assistant Professor",
