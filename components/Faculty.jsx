@@ -45,7 +45,7 @@ const facultyMembers = [
   { id: 3, name: "Dr. Dilkeshwar Pandey", designation: "Professor" },
   {
     id: 4,
-    name: "Dr. Preeti Garg",
+    name: "Dr. Swati Sharma",
     designation: "Associate Professor",
   },
   { id: 5, name: "Dr. Parita Jain", designation: "Professor" },
@@ -59,7 +59,7 @@ const facultyMembers = [
   },
   {
     id: 10,
-    name: "Dr. Swati Sharma",
+    name: "Dr. Preeti Garg",
     designation: "Associate Professor",
   },
   { id: 11, name: "Dr. Upendra Mishra", designation: "Associate Professor" },
@@ -102,19 +102,18 @@ const facultyMembers = [
   { id: 32, name: "Ms. Maitree", designation: "Assistant Professor" },
   { id: 33, name: "Mr. Aman Srivastav", designation: "Assistant Professor" },
   { id: 34, name: "Mr. Mohit Tanwar", designation: "Assistant Professor" },
-  { id: 35, name: "Mr. Hrjeet Singh", designation: "Assistant Professor" },
-  { id: 36, name: "Ms. Prabhjot Kaur", designation: "Assistant Professor" },
-  { id: 37, name: "Dr. Nand Kishor Yadav", designation: "Assistant Professor" },
-  { id: 38, name: "Mr. Navdesh Singh", designation: "Assistant Professor" },
+  { id: 35, name: "Ms. Prabhjot Kaur", designation: "Assistant Professor" },
+  { id: 36, name: "Dr. Nand Kishor Yadav", designation: "Assistant Professor" },
+  { id: 37, name: "Mr. Navdesh Singh", designation: "Assistant Professor" },
   {
-    id: 39,
+    id: 38,
     name: "Mr. Rishab Singh Rathore",
     designation: "Assistant Professor",
   },
-  { id: 40, name: "Mr. Anikesh", designation: "Assistant Professor" },
-  { id: 41, name: "Mr. Ravi Tomer", designation: "Assistant Manager" },
-  { id: 42, name: "Mr. Sandeep Kumar", designation: "Officer-IT" },
-  { id: 43, name: "Mr. Jaskirat Singh", designation: "Adjunct Faculty" },
+  { id: 39, name: "Mr. Anikesh", designation: "Assistant Professor" },
+  { id: 40, name: "Mr. Ravi Tomer", designation: "Assistant Manager" },
+  { id: 41, name: "Mr. Sandeep Kumar", designation: "Officer-IT" },
+  { id: 42, name: "Mr. Jaskirat Singh", designation: "Adjunct Faculty" },
 ];
 
 const inferDegree = (name) => (name.startsWith("Dr.") ? "Ph.D." : "");
